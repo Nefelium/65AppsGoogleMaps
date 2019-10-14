@@ -10,7 +10,7 @@ import Foundation
 
 struct CoordinatesMock {
     
-    let data = [Point(lattitude: 60.1841232, longitude: 24.9276637,  title: "Helsinki", snippet: "Kamppi"),
+    let data = [Point(lattitude: 60.1841232, longitude: 24.9276637,  title: "Helsinki", snippet: "Kamppi", locationTypeID: .zero),
                 Point(lattitude: 60.1697809, longitude: 24.9327135,  title: "Helsinki", snippet: "Tavastia"),
                 Point(lattitude: 60.1727480, longitude: 24.9256737,  title: "Helsinki", snippet: "Temppeliaukio"),
                 Point(lattitude: 60.2605952, longitude: 24.6647078,  title: "Espoo", snippet: "Lake Bodom"),
@@ -20,4 +20,16 @@ struct CoordinatesMock {
                 Point(lattitude: 59.9490246, longitude: 30.2437857,  title: "Санкт-Петербург", snippet: "Васильевский остров"),
                 Point(lattitude: 59.8591264, longitude: 30.0869622,  title: "Санкт-Петербург", snippet: "Сергиевская слобода")
 ]
+    
+    let typed = [Point(lattitude: 57.1843238, longitude: 48.9276637,  title: "Item 1", snippet: "AAA", locationTypeID: .man),
+                    Point(lattitude: 57.1697809, longitude: 48.9327135,  title: "Item 2", snippet: "BBB", locationTypeID: .step),
+                    Point(lattitude: 57.1727480, longitude: 48.9256737,  title: "Item 3", snippet: "CCC", locationTypeID: .bicycle),
+                    Point(lattitude: 56.2605952, longitude: 48.6647098,  title: "Item 4", snippet: "DDD", locationTypeID: .bicycle),
+                    Point(lattitude: 57.3170409, longitude: 47.9611579,  title: "Item 5", snippet: "EEE", locationTypeID: .step),
+                    Point(lattitude: 57.9905525, longitude: 48.7087134,  title: "Item 6", snippet: "FFF", locationTypeID: .step),
+                    Point(lattitude: 57.8902789, longitude: 48.9038036,  title: "Item 7", snippet: "GGG", locationTypeID: .man),
+                    Point(lattitude: 57.0816789, longitude: 48.0138536,  title: "Item 8", snippet: "HHH", locationTypeID: .step),
+                    Point(lattitude: 57.8806789, longitude: 49.0038026,  title: "Item 8", snippet: "JJJ", locationTypeID: .man),
+                    Point(lattitude: 56.4990156, longitude: 48.2935837,  title: "Item 10", snippet: "III", locationTypeID: .bicycle)
+    ]
 }

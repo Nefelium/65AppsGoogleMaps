@@ -31,12 +31,12 @@ class MapViewController: UIViewController {
     }
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupClusterManager()
         setupMapView()
         setupButtons()
+        setMarkerForMap(locations: CoordinatesMock().typed)
     }
 
     private func changeMapZoom(action: MapZoom) {
@@ -70,8 +70,7 @@ class MapViewController: UIViewController {
         let lat = kCameraLatitude + extent * randomScale()
         let lng = kCameraLongitude + extent * randomScale()
         let name = "Item \(index)"
-        let item =
-            POIItem(position: CLLocationCoordinate2DMake(lat, lng), name: name, snippet: "")
+        let item = POIItem(position: CLLocationCoordinate2DMake(lat, lng), name: name, snippet: "", locationTypeID: .man)
         clusterManager.add(item)
       }
     }
@@ -98,6 +97,36 @@ class MapViewController: UIViewController {
     
         clusterManager.cluster()
         clusterManager.setDelegate(self, mapDelegate: self)
+    }
+    
+    func setMarkerForMap(locations: [Point]) -> Void {
+
+        //clear all marker before load again
+      //  self.mapView.clear()
+        var index = 0
+        for location in locations {
+
+            let marker = GMSMarker()
+            let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(location.lattitude), longitude: CLLocationDegrees(location.longitude))
+            marker.position = coordinate
+
+            //set image
+            let imageName = location.locationTypeID.rawValue
+            let image = UIImage(named: imageName)?.resize(maxWidthHeight: 25.0)
+            marker.icon = image
+
+            marker.userData = location
+            marker.map = mapView
+            mapView.delegate = self
+            self.generatePOIItems(location.lattitude, long: location.longitude, title: location.title, snippet: "", id: location.locationTypeID)
+           index += 1
+        }
+        self.clusterManager.cluster()
+    }
+    
+    func generatePOIItems(_ lat: Double, long: Double, title: String, snippet: String, id: LocationTypes) {
+        let item = POIItem(position: CLLocationCoordinate2DMake(lat, long), name: title, snippet: "", locationTypeID: id)
+        clusterManager.add(item)
     }
     
 }

@@ -13,4 +13,5 @@ struct Point {
     var longitude = 0.0
     var title = ""
     var snippet = ""
+    var locationTypeID = LocationTypes.zero
 }
