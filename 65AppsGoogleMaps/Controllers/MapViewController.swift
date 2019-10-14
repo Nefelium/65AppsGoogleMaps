@@ -64,6 +64,22 @@ class MapViewController: UIViewController {
         mapView.camera = GMSCameraPosition.camera(withTarget: location, zoom: 5.0)
     }
     
+    func generateClusterItems(kCameraLatitude: Double, kCameraLongitude: Double) {
+      let extent = 0.2
+      for index in 1...kClusterItemCount {
+        let lat = kCameraLatitude + extent * randomScale()
+        let lng = kCameraLongitude + extent * randomScale()
+        let name = "Item \(index)"
+        let item =
+            POIItem(position: CLLocationCoordinate2DMake(lat, lng), name: name, snippet: "")
+        clusterManager.add(item)
+      }
+    }
+    
+    private func randomScale() -> Double {
+      return Double(arc4random()) / Double(UINT32_MAX) * 3.0 - 2.0
+    }
+    
     private func setupButtons() {
         plusButton.layer.cornerRadius = 9
         minusButton.layer.cornerRadius = 9
@@ -78,8 +94,8 @@ class MapViewController: UIViewController {
                                            renderer: renderer)
         clusterItemGenerator.prepareItems(clusterManager: clusterManager)
         // Generate and add random items to the cluster manager.
-        //  generateClusterItems()
-        
+        generateClusterItems(kCameraLatitude: 54.1893423, kCameraLongitude: 45.2810283)
+    
         clusterManager.cluster()
         clusterManager.setDelegate(self, mapDelegate: self)
     }
@@ -89,6 +105,16 @@ class MapViewController: UIViewController {
 extension MapViewController: GMSMapViewDelegate {
     
         func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+            guard let mapPoint = marker.userData as? POIItem else {
+                let mapMarker = GMSMarker()
+                mapMarker.map = mapView
+                return false
+            }
+            let mapMarker = GMSMarker(position: mapPoint.position)
+            mapMarker.title = mapPoint.name
+            mapMarker.snippet = mapPoint.snippet
+            mapMarker.map = mapView
+            
             let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DataViewController") as! DataViewController
             child.transitioningDelegate = transition
             child.modalPresentationStyle = .custom
