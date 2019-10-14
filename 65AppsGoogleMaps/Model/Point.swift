@@ -1,5 +1,5 @@
 //
-//  PointModel.swift
+//  Point.swift
 //  65AppsGoogleMaps
 //
 //  Created by Mikhail Fogel on 11.10.2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PointModel {
+struct Point {
     var lattitude = 0.0
     var longitude = 0.0
     var title = ""

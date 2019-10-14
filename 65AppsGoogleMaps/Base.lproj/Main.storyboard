@@ -15,9 +15,56 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u76-h9-P8r" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaO-uq-HZp">
+                                <rect key="frame" x="24" y="92" width="50" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jlI-7c-nXd"/>
+                                    <constraint firstAttribute="width" constant="50" id="ljF-gH-cAa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="30"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="plusAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ak-8y-3Jn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ev9-rI-901">
+                                <rect key="frame" x="24" y="166" width="50" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6pS-89-HPF"/>
+                                    <constraint firstAttribute="height" constant="50" id="ZKB-pU-oRZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="30"/>
+                                <state key="normal" title="-"/>
+                                <connections>
+                                    <action selector="minusAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IYy-ap-5ue"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="u76-h9-P8r" secondAttribute="bottom" id="1bn-dE-a35"/>
+                            <constraint firstItem="VaO-uq-HZp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="71J-ug-T1u"/>
+                            <constraint firstItem="Ev9-rI-901" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="Owa-qD-Tv9"/>
+                            <constraint firstItem="VaO-uq-HZp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="QXW-fp-V44"/>
+                            <constraint firstItem="u76-h9-P8r" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kLe-ld-jPH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u76-h9-P8r" secondAttribute="trailing" id="nE2-qZ-URD"/>
+                            <constraint firstItem="Ev9-rI-901" firstAttribute="top" secondItem="VaO-uq-HZp" secondAttribute="bottom" constant="24" id="nLC-2M-Kbh"/>
+                            <constraint firstItem="u76-h9-P8r" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vcK-Uc-fqN"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="u76-h9-P8r" id="gzb-KP-LhY"/>
+                        <outlet property="minusButton" destination="Ev9-rI-901" id="AjE-1R-bkx"/>
+                        <outlet property="plusButton" destination="VaO-uq-HZp" id="dwd-ic-kC0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

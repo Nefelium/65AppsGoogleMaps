@@ -1,5 +1,5 @@
 //
-//  CoorinatesModel.swift
+//  CoorinatesMock.swift
 //  65AppsGoogleMaps
 //
 //  Created by Mikhail Fogel on 11.10.2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CoordinatesModel {
+struct CoordinatesMock {
     
     let data = [Point(lattitude: 60.1841232, longitude: 24.9276637,  title: "Helsinki", snippet: "Kamppi"),
                 Point(lattitude: 60.1697809, longitude: 24.9327135,  title: "Helsinki", snippet: "Tavastia"),
