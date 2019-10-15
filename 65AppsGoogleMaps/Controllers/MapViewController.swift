@@ -142,24 +142,28 @@ class MapViewController: UIViewController {
 }
 
 extension MapViewController: GMSMapViewDelegate {
+     
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        mapMarker.map = nil
+    }
     
-        func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-            guard let mapPoint = marker.userData as? POIItem else {
-                return false
-            }
-            mapMarker.map = nil
-            mapMarker = GMSMarker(position: mapPoint.position)
-            mapMarker.title = mapPoint.name
-            mapMarker.snippet = mapPoint.snippet
-            mapMarker.map = mapView
-            
-            let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DataViewController") as! DataViewController
-            child.transitioningDelegate = transition
-            child.modalPresentationStyle = .custom
-    
-            present(child, animated: true)
-            return true
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        guard let mapPoint = marker.userData as? POIItem else {
+            return false
         }
+        mapMarker.map = nil
+        mapMarker = GMSMarker(position: mapPoint.position)
+        mapMarker.title = mapPoint.name
+        mapMarker.snippet = mapPoint.snippet
+        mapMarker.map = mapView
+        
+        let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DataViewController") as! DataViewController
+        child.transitioningDelegate = transition
+        child.modalPresentationStyle = .custom
+        
+        present(child, animated: true)
+        return true
+    }
 }
 
 extension MapViewController: GMUClusterManagerDelegate {
