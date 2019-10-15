@@ -14,8 +14,10 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
     private var clusterManager: GMUClusterManager!
+    private var secondClusterManager: GMUClusterManager!
     private let clusterItemGenerator = ClusterItemMaker()
     private let transition = PanelTransition()
+    private var mapMarker = GMSMarker()
     
     private var kClusterItemCount = 10
     
@@ -33,6 +35,7 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        generateCustomClusterItems(kCameraLatitude: 51.2930419, kCameraLongitude: 14.2038475)
         setupClusterManager()
         setupMapView()
         setupButtons()
@@ -40,25 +43,15 @@ class MapViewController: UIViewController {
     }
 
     private func changeMapZoom(action: MapZoom) {
-           let zoom = mapView.camera.zoom
-           switch action {
-           case .zoomPlus: mapView.animate(toZoom: zoom + 1)
-           case .zoomMinus: mapView.animate(toZoom: zoom - 1)
+        mapMarker.map = nil
+        let zoom = mapView.camera.zoom
+        switch action {
+        case .zoomPlus: mapView.animate(toZoom: zoom + 1)
+        case .zoomMinus: mapView.animate(toZoom: zoom - 1)
            }
        }
     
     func setupMapView() {
-//        let camera = GMSCameraPosition.camera(withLatitude: 54.3224, longitude: 48.40, zoom: 17.0)
-//        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-//        view = mapView
-//        mapView.delegate = self
-//        // Creates a marker in the center of the map.
-//        let marker = GMSMarker()
-//        marker.position = CLLocationCoordinate2D(latitude: 54.3224, longitude: 48.40)
-//        marker.title = "65apps"
-//        marker.snippet = "Ulyanovsk"
-//        marker.map = mapView
-        
         let location = CLLocationCoordinate2D(latitude: CoordinatesMock().data[0].lattitude,
                                               longitude: CoordinatesMock().data[0].longitude)
         mapView.camera = GMSCameraPosition.camera(withTarget: location, zoom: 5.0)
@@ -70,9 +63,28 @@ class MapViewController: UIViewController {
         let lat = kCameraLatitude + extent * randomScale()
         let lng = kCameraLongitude + extent * randomScale()
         let name = "Item \(index)"
-        let item = POIItem(position: CLLocationCoordinate2DMake(lat, lng), name: name, snippet: "", locationTypeID: .man)
+        let item = POIItem(position: CLLocationCoordinate2DMake(lat, lng), name: name, snippet: "", locationTypeID: .zero)
         clusterManager.add(item)
       }
+    }
+    
+    func generateCustomClusterItems(kCameraLatitude: Double, kCameraLongitude: Double) {
+        let iconGenerator = GMUDefaultClusterIconGenerator(buckets: [5, 10, 15, 50, 100, 200, 500, 1000], backgroundColors: [.systemPink, .purple, .purple, .purple, .purple, .purple, .purple, .purple])
+            let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
+            let renderer = GMUDefaultClusterRenderer(mapView: mapView,
+                                                     clusterIconGenerator: iconGenerator)
+            secondClusterManager = GMUClusterManager(map: mapView, algorithm: algorithm,
+                                               renderer: renderer)
+            let extent = 0.2
+            for index in 1...kClusterItemCount {
+              let lat = kCameraLatitude + extent * randomScale()
+              let lng = kCameraLongitude + extent * randomScale()
+              let name = "Item \(index)"
+              let item = POIItem(position: CLLocationCoordinate2DMake(lat, lng), name: name, snippet: "", locationTypeID: .zero)
+              secondClusterManager.add(item)
+            }
+            secondClusterManager.cluster()
+            secondClusterManager.setDelegate(self, mapDelegate: self)
     }
     
     private func randomScale() -> Double {
@@ -85,7 +97,7 @@ class MapViewController: UIViewController {
     }
     
     private func setupClusterManager() {
-        let iconGenerator = GMUDefaultClusterIconGenerator()
+        let iconGenerator = GMUDefaultClusterIconGenerator(buckets: [5, 10, 15, 20, 50, 100, 200, 300, 500, 1000], backgroundColors: [.green, .red, .blue, .brown, .darkGray, .lightGray, .magenta, .cyan, .purple, .systemBlue])
         let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
         let renderer = GMUDefaultClusterRenderer(mapView: mapView,
                                                  clusterIconGenerator: iconGenerator)
@@ -101,8 +113,6 @@ class MapViewController: UIViewController {
     
     func setMarkerForMap(locations: [Point]) -> Void {
 
-        //clear all marker before load again
-      //  self.mapView.clear()
         var index = 0
         for location in locations {
 
@@ -135,11 +145,10 @@ extension MapViewController: GMSMapViewDelegate {
     
         func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
             guard let mapPoint = marker.userData as? POIItem else {
-                let mapMarker = GMSMarker()
-                mapMarker.map = mapView
                 return false
             }
-            let mapMarker = GMSMarker(position: mapPoint.position)
+            mapMarker.map = nil
+            mapMarker = GMSMarker(position: mapPoint.position)
             mapMarker.title = mapPoint.name
             mapMarker.snippet = mapPoint.snippet
             mapMarker.map = mapView
@@ -155,17 +164,9 @@ extension MapViewController: GMSMapViewDelegate {
 
 extension MapViewController: GMUClusterManagerDelegate {
     
-    func clusterManager(_ clusterManager: GMUClusterManager, didTap clusterItem: GMUClusterItem) -> Bool {
-        let camera = GMSCameraPosition.camera(withTarget: clusterItem.position, zoom: mapView.camera.zoom)
-        let update = GMSCameraUpdate.setCamera(camera)
-        mapView.moveCamera(update)
-        return false
-    }
-    
     func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
         let camera = GMSCameraPosition.camera(withTarget: cluster.position, zoom: mapView.camera.zoom + 1)
-        let update = GMSCameraUpdate.setCamera(camera)
-        mapView.moveCamera(update)
+        mapView.animate(to: camera)
         return false
     }
 

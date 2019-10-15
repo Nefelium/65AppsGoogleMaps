@@ -61,7 +61,6 @@
 		07965044234B4B35005C72B2 /* DimmPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0796503F234B4B35005C72B2 /* DimmPresentationController.swift */; };
 		07965045234B4B35005C72B2 /* PresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07965041234B4B35005C72B2 /* PresentAnimation.swift */; };
 		07965046234B4B35005C72B2 /* DismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07965042234B4B35005C72B2 /* DismissAnimation.swift */; };
-		07965050234B67E6005C72B2 /* contactData.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0796504F234B67E6005C72B2 /* contactData.xib */; };
 		913BBC9FA4099A2CE763922A /* libPods-65AppsGoogleMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8405DCC4ACC5D4122AFB37 /* libPods-65AppsGoogleMaps.a */; };
 /* End PBXBuildFile section */
 
@@ -175,7 +174,6 @@
 		07965041234B4B35005C72B2 /* PresentAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAnimation.swift; sourceTree = "<group>"; };
 		07965042234B4B35005C72B2 /* DismissAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnimation.swift; sourceTree = "<group>"; };
 		07965047234B5E5E005C72B2 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
-		0796504F234B67E6005C72B2 /* contactData.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = contactData.xib; sourceTree = "<group>"; };
 		08FC217596620E77F3C8C1CF /* Pods-65AppsGoogleMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-65AppsGoogleMaps.release.xcconfig"; path = "Target Support Files/Pods-65AppsGoogleMaps/Pods-65AppsGoogleMaps.release.xcconfig"; sourceTree = "<group>"; };
 		9A706D940010AC3FBB33F988 /* Pods-65AppsGoogleMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-65AppsGoogleMaps.debug.xcconfig"; path = "Target Support Files/Pods-65AppsGoogleMaps/Pods-65AppsGoogleMaps.debug.xcconfig"; sourceTree = "<group>"; };
 		DC8405DCC4ACC5D4122AFB37 /* libPods-65AppsGoogleMaps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-65AppsGoogleMaps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,14 +219,10 @@
 				076C058B234E0A36008517EE /* Protocols */,
 				073862A22350A60C00F22148 /* Model */,
 				073862B223544B4400F22148 /* Enums */,
-				0796504F234B67E6005C72B2 /* contactData.xib */,
 				073862AF2350B99500F22148 /* Controllers */,
-				072CCE36234756F8007D0F77 /* Main.storyboard */,
+				0767E59A2355A8C20092EEEC /* View */,
 				073862AA2350AF4800F22148 /* Clasterize */,
-				076C0594234E109F008517EE /* PhotoCell.swift */,
-				072CCE46234B1DB9007D0F77 /* VerticallyButton.swift */,
 				072CCE39234756FA007D0F77 /* Assets.xcassets */,
-				072CCE3B234756FA007D0F77 /* LaunchScreen.storyboard */,
 				072CCE3E234756FA007D0F77 /* Info.plist */,
 				0738629E2350745D00F22148 /* BridgingHeader.h */,
 			);
@@ -402,6 +396,17 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		0767E59A2355A8C20092EEEC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				072CCE36234756F8007D0F77 /* Main.storyboard */,
+				076C0594234E109F008517EE /* PhotoCell.swift */,
+				072CCE46234B1DB9007D0F77 /* VerticallyButton.swift */,
+				072CCE3B234756FA007D0F77 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		076C0587234E09F4008517EE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,7 +561,6 @@
 			files = (
 				072CCE3D234756FA007D0F77 /* LaunchScreen.storyboard in Resources */,
 				072CCE3A234756FA007D0F77 /* Assets.xcassets in Resources */,
-				07965050234B67E6005C72B2 /* contactData.xib in Resources */,
 				072CCE38234756F8007D0F77 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
