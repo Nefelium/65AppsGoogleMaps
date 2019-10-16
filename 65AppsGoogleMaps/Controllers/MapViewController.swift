@@ -18,6 +18,7 @@ class MapViewController: UIViewController {
     private let clusterItemGenerator = ClusterItemMaker()
     private let transition = PanelTransition()
     private var mapMarker = GMSMarker()
+    private var infoMarkerDidAdd = false
     
     private var kClusterItemCount = 10
     
@@ -144,7 +145,11 @@ class MapViewController: UIViewController {
 extension MapViewController: GMSMapViewDelegate {
      
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        mapMarker.map = nil
+        if infoMarkerDidAdd {
+            print("removing marker")
+            mapMarker.map = nil
+            infoMarkerDidAdd = false
+        }
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
@@ -156,6 +161,7 @@ extension MapViewController: GMSMapViewDelegate {
         mapMarker.title = mapPoint.name
         mapMarker.snippet = mapPoint.snippet
         mapMarker.map = mapView
+        infoMarkerDidAdd = true
         
         let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DataViewController") as! DataViewController
         child.transitioningDelegate = transition
