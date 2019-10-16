@@ -19,6 +19,7 @@ class MapViewController: UIViewController {
     private let transition = PanelTransition()
     private var mapMarker = GMSMarker()
     private var infoMarkerDidAdd = false
+    private var customMarker = GMSMarker()
     
     private var kClusterItemCount = 10
     
@@ -102,6 +103,7 @@ class MapViewController: UIViewController {
         let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
         let renderer = GMUDefaultClusterRenderer(mapView: mapView,
                                                  clusterIconGenerator: iconGenerator)
+        renderer.delegate = self
         clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm,
                                            renderer: renderer)
         clusterItemGenerator.prepareItems(clusterManager: clusterManager)
@@ -117,17 +119,16 @@ class MapViewController: UIViewController {
         var index = 0
         for location in locations {
 
-            let marker = GMSMarker()
             let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(location.lattitude), longitude: CLLocationDegrees(location.longitude))
-            marker.position = coordinate
+            customMarker.position = coordinate
 
             //set image
             let imageName = location.locationTypeID.rawValue
             let image = UIImage(named: imageName)?.resize(maxWidthHeight: 25.0)
-            marker.icon = image
+            customMarker.icon = image
 
-            marker.userData = location
-            marker.map = mapView
+            customMarker.userData = location
+            customMarker.map = mapView
             mapView.delegate = self
             self.generatePOIItems(location.lattitude, long: location.longitude, title: location.title, snippet: "", id: location.locationTypeID)
            index += 1
@@ -158,6 +159,11 @@ extension MapViewController: GMSMapViewDelegate {
         }
         mapMarker.map = nil
         mapMarker = GMSMarker(position: mapPoint.position)
+        if mapPoint.locationTypeID != .zero {
+        marker.icon = UIImage(named: mapPoint.locationTypeID.rawValue)?.resize(maxWidthHeight: 25.0)
+        } else {
+        marker.icon = nil
+        }
         mapMarker.title = mapPoint.name
         mapMarker.snippet = mapPoint.snippet
         mapMarker.map = mapView
@@ -169,6 +175,17 @@ extension MapViewController: GMSMapViewDelegate {
         
         present(child, animated: true)
         return true
+    }
+}
+
+extension MapViewController: GMUClusterRendererDelegate {
+    func renderer(_ renderer: GMUClusterRenderer, willRenderMarker marker: GMSMarker) {
+        guard let itemMarker = marker.userData as? POIItem else { return }
+        if itemMarker.locationTypeID != .zero {
+        marker.icon = UIImage(named: itemMarker.locationTypeID.rawValue)?.resize(maxWidthHeight: 25.0)
+        } else {
+        marker.icon = nil
+        }
     }
 }
 

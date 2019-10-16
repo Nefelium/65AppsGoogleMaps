@@ -363,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				073862A62350A62A00F22148 /* Point.swift */,
+				0738629F235079E100F22148 /* POIItem.swift */,
 				073862A82350A72900F22148 /* CoorinatesMock.swift */,
 			);
 			path = Model;
@@ -371,7 +372,6 @@
 		073862AA2350AF4800F22148 /* Clasterize */ = {
 			isa = PBXGroup;
 			children = (
-				0738629F235079E100F22148 /* POIItem.swift */,
 				0767E59823549CAA0092EEEC /* MapClusterIconGenerator.swift */,
 				073862AB2350AF8D00F22148 /* ClusterItemMaker.swift */,
 			);
