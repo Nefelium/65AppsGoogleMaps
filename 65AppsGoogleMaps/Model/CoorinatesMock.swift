@@ -30,6 +30,6 @@ struct CoordinatesMock {
                     Point(lattitude: 57.8902789, longitude: 48.9038036,  title: "Item 7", snippet: "GGG", locationTypeID: .man),
                     Point(lattitude: 57.0816789, longitude: 48.0138536,  title: "Item 8", snippet: "HHH", locationTypeID: .step),
                     Point(lattitude: 57.8806789, longitude: 49.0038026,  title: "Item 8", snippet: "JJJ", locationTypeID: .man),
-                    Point(lattitude: 56.4990156, longitude: 48.2935837,  title: "Item 10", snippet: "III", locationTypeID: .bicycle)
+                    Point(lattitude: 57.1950126, longitude: 48.2435837,  title: "Item 10", snippet: "III", locationTypeID: .bicycle)
     ]
 }

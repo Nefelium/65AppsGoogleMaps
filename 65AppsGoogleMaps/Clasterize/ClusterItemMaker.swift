@@ -15,7 +15,7 @@ class ClusterItemMaker {
    func prepareItems(clusterManager: GMUClusterManager) {
        for item in mapPoints {
         let position = CLLocationCoordinate2DMake(item.lattitude, item.longitude)
-        let mapItem = POIItem(position: position, name: item.title, snippet: item.snippet, locationTypeID: .bicycle)
+        let mapItem = POIItem(position: position, name: item.title, snippet: item.snippet, locationTypeID: .zero)
         clusterManager.add(mapItem)
        }
    }

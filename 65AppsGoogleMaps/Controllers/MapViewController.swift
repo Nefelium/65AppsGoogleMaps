@@ -19,7 +19,6 @@ class MapViewController: UIViewController {
     private let transition = PanelTransition()
     private var mapMarker = GMSMarker()
     private var infoMarkerDidAdd = false
-    private var customMarker = GMSMarker()
     
     private var kClusterItemCount = 10
     
@@ -114,24 +113,19 @@ class MapViewController: UIViewController {
         clusterManager.setDelegate(self, mapDelegate: self)
     }
     
-    func setMarkerForMap(locations: [Point]) -> Void {
+    func setMarkerForMap(locations: [Point]) {
 
-        var index = 0
         for location in locations {
-
             let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(location.lattitude), longitude: CLLocationDegrees(location.longitude))
-            customMarker.position = coordinate
+            mapMarker.position = coordinate
 
             //set image
             let imageName = location.locationTypeID.rawValue
             let image = UIImage(named: imageName)?.resize(maxWidthHeight: 25.0)
-            customMarker.icon = image
+            mapMarker.icon = image
 
-            customMarker.userData = location
-            customMarker.map = mapView
-            mapView.delegate = self
+            mapMarker.userData = location
             self.generatePOIItems(location.lattitude, long: location.longitude, title: location.title, snippet: "", id: location.locationTypeID)
-           index += 1
         }
         self.clusterManager.cluster()
     }
@@ -147,7 +141,6 @@ extension MapViewController: GMSMapViewDelegate {
      
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         if infoMarkerDidAdd {
-            print("removing marker")
             mapMarker.map = nil
             infoMarkerDidAdd = false
         }

@@ -104,9 +104,6 @@ extension DataViewController: UICollectionViewDataSource {
     
 }
 
-extension DataViewController: UICollectionViewDelegate {
-}
-
 
 extension DataViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
