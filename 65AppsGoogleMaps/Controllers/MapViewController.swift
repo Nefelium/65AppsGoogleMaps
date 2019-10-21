@@ -12,6 +12,8 @@ import GooglePlaces
 
 class MapViewController: UIViewController {
     
+    var viewModel = MapViewModel()
+    
     @IBOutlet weak var mapView: GMSMapView!
     private var clusterManager: GMUClusterManager!
     private var secondClusterManager: GMUClusterManager!
@@ -41,6 +43,9 @@ class MapViewController: UIViewController {
         setupMapView()
         setupButtons()
         setMarkerForMap(locations: CoordinatesMock().typed)
+        viewModel.configure {
+            // do smth after data completion
+        }
     }
 
     private func changeMapZoom(action: MapZoom) {

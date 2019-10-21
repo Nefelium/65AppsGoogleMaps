@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0722B0FD235D9A64000BB03D /* CoordinatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0722B0FC235D9A64000BB03D /* CoordinatesModel.swift */; };
+		0722B10C235DA49F000BB03D /* MoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0722B10B235DA49F000BB03D /* MoyaService.swift */; };
+		0722B10E235DA967000BB03D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0722B10D235DA967000BB03D /* NetworkManager.swift */; };
+		0722B111235DC2AA000BB03D /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0722B110235DC2AA000BB03D /* MapViewModel.swift */; };
 		072CCE33234756F8007D0F77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CCE32234756F8007D0F77 /* AppDelegate.swift */; };
 		072CCE35234756F8007D0F77 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CCE34234756F8007D0F77 /* MapViewController.swift */; };
 		072CCE38234756F8007D0F77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 072CCE36234756F8007D0F77 /* Main.storyboard */; };
@@ -65,6 +69,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0722B104235D9A65000BB03D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07965047234B5E5E005C72B2 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5D797E9A5C5782CE845840781FA1CC81;
+			remoteInfo = Alamofire;
+		};
+		0722B106235D9A65000BB03D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07965047234B5E5E005C72B2 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3756A9BBE41ABEE8DCBF5BCA6972C4DA;
+			remoteInfo = Moya;
+		};
+		0722B108235D9A65000BB03D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07965047234B5E5E005C72B2 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0461B3F80FC05957690727254D64DB36;
+			remoteInfo = Result;
+		};
 		0796504D234B5E5E005C72B2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 07965047234B5E5E005C72B2 /* Pods.xcodeproj */;
@@ -75,6 +100,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0722B0FC235D9A64000BB03D /* CoordinatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatesModel.swift; sourceTree = "<group>"; };
+		0722B10B235DA49F000BB03D /* MoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaService.swift; sourceTree = "<group>"; };
+		0722B10D235DA967000BB03D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0722B110235DC2AA000BB03D /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		072CCE2F234756F8007D0F77 /* 65AppsGoogleMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 65AppsGoogleMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		072CCE32234756F8007D0F77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		072CCE34234756F8007D0F77 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +220,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0722B10A235DA472000BB03D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0722B10B235DA49F000BB03D /* MoyaService.swift */,
+				0722B10D235DA967000BB03D /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0722B10F235DC287000BB03D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0722B110235DC2AA000BB03D /* MapViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		072CCE26234756F8007D0F77 = {
 			isa = PBXGroup;
 			children = (
@@ -221,8 +267,10 @@
 				073862B223544B4400F22148 /* Enums */,
 				073862AF2350B99500F22148 /* Controllers */,
 				0767E59A2355A8C20092EEEC /* View */,
+				0722B10F235DC287000BB03D /* ViewModel */,
 				073862AA2350AF4800F22148 /* Clasterize */,
 				072CCE39234756FA007D0F77 /* Assets.xcassets */,
+				0722B10A235DA472000BB03D /* Network */,
 				072CCE3E234756FA007D0F77 /* Info.plist */,
 				0738629E2350745D00F22148 /* BridgingHeader.h */,
 			);
@@ -363,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				073862A62350A62A00F22148 /* Point.swift */,
+				0722B0FC235D9A64000BB03D /* CoordinatesModel.swift */,
 				0738629F235079E100F22148 /* POIItem.swift */,
 				073862A82350A72900F22148 /* CoorinatesMock.swift */,
 			);
@@ -460,7 +509,10 @@
 		07965048234B5E5E005C72B2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				0722B105235D9A65000BB03D /* libAlamofire.a */,
+				0722B107235D9A65000BB03D /* libMoya.a */,
 				0796504E234B5E5E005C72B2 /* libPods-65AppsGoogleMaps.a */,
+				0722B109235D9A65000BB03D /* libResult.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -545,6 +597,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		0722B105235D9A65000BB03D /* libAlamofire.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAlamofire.a;
+			remoteRef = 0722B104235D9A65000BB03D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0722B107235D9A65000BB03D /* libMoya.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMoya.a;
+			remoteRef = 0722B106235D9A65000BB03D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0722B109235D9A65000BB03D /* libResult.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libResult.a;
+			remoteRef = 0722B108235D9A65000BB03D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		0796504E234B5E5E005C72B2 /* libPods-65AppsGoogleMaps.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -614,12 +687,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0722B10E235DA967000BB03D /* NetworkManager.swift in Sources */,
 				07965044234B4B35005C72B2 /* DimmPresentationController.swift in Sources */,
 				0767E597235489410092EEEC /* UIImage.swift in Sources */,
 				0738629B235071CF00F22148 /* GMUWeightedLatLng.m in Sources */,
 				07965034234B4B0B005C72B2 /* TransitionDriver.swift in Sources */,
 				072CCE47234B1DB9007D0F77 /* VerticallyButton.swift in Sources */,
+				0722B111235DC2AA000BB03D /* MapViewModel.swift in Sources */,
 				07386284235071CF00F22148 /* GMUKMLParser.m in Sources */,
+				0722B10C235DA49F000BB03D /* MoyaService.swift in Sources */,
 				076C058F234E0ADF008517EE /* NibLoadable.swift in Sources */,
 				0767E592235466C30092EEEC /* LocationTypes.swift in Sources */,
 				073862A92350A72900F22148 /* CoorinatesMock.swift in Sources */,
@@ -651,6 +727,7 @@
 				07386289235071CF00F22148 /* GMUStyleMap.m in Sources */,
 				073862A72350A62A00F22148 /* Point.swift in Sources */,
 				0738628E235071CF00F22148 /* GMUPair.m in Sources */,
+				0722B0FD235D9A64000BB03D /* CoordinatesModel.swift in Sources */,
 				0767E59923549CAA0092EEEC /* MapClusterIconGenerator.swift in Sources */,
 				076C0591234E0B65008517EE /* Reusable.swift in Sources */,
 				0796503A234B4B1D005C72B2 /* Math.swift in Sources */,
