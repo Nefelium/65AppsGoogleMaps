@@ -15,11 +15,11 @@ enum MoyaService {
 
 extension MoyaService: TargetType {
     
-    var baseURL: URL { return URL(string: "https://jsonplaceholder.typicode.com")! }
+    var baseURL: URL { return URL(string: "http://www.mocky.io/v2")! }
     var path: String {
         switch self {
         case .getCoordinates:
-            return "/posts"
+            return "/5dba84fb3000008c00028f3b"
         }
     }
 

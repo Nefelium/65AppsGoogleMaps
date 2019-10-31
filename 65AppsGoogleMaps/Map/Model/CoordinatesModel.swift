@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CoordinatesModel: Codable {
+struct CoordinatesModel: Codable {
     
     var features = [FeaturesCoordinate]()
     
@@ -17,7 +17,7 @@ class CoordinatesModel: Codable {
     }
 }
 
-class FeaturesCoordinate: Codable {
+struct FeaturesCoordinate: Codable {
     var type = "Feature"
     var properties = Properties()
     var geometry = Geometry()
@@ -29,7 +29,7 @@ class FeaturesCoordinate: Codable {
     }
 }
 
-class Properties: Codable {
+struct Properties: Codable {
     var markercolor: String?
     var markersize: String?
     var markersymbol: String?
@@ -45,7 +45,7 @@ class Properties: Codable {
     }
 }
 
-class Geometry: Codable {
+struct Geometry: Codable {
     var type = "Point"
     var coordinates = [Double(), Double()]
     

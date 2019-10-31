@@ -35,6 +35,10 @@ class MapViewController: UIViewController {
         changeMapZoom(action: .zoomMinus)
     }
     
+    private func setupButtons() {
+        plusButton.layer.cornerRadius = 9
+        minusButton.layer.cornerRadius = 9
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +48,7 @@ class MapViewController: UIViewController {
         setupButtons()
         setMarkerForMap(locations: CoordinatesMock().typed)
         viewModel.configure {
-            // do smth after data completion
+            self.setCoordinatesFromModel(data: self.viewModel.data)
         }
     }
 
@@ -97,11 +101,6 @@ class MapViewController: UIViewController {
       return Double(arc4random()) / Double(UINT32_MAX) * 3.0 - 2.0
     }
     
-    private func setupButtons() {
-        plusButton.layer.cornerRadius = 9
-        minusButton.layer.cornerRadius = 9
-    }
-    
     private func setupClusterManager() {
         let iconGenerator = GMUDefaultClusterIconGenerator(buckets: [5, 10, 15, 20, 50, 100, 200, 300, 500, 1000], backgroundColors: [.green, .red, .blue, .brown, .darkGray, .lightGray, .magenta, .cyan, .purple, .systemBlue])
         let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
@@ -130,13 +129,20 @@ class MapViewController: UIViewController {
             mapMarker.icon = image
 
             mapMarker.userData = location
-            self.generatePOIItems(location.lattitude, long: location.longitude, title: location.title, snippet: "", id: location.locationTypeID)
+            self.generatePOIItem(location.lattitude, long: location.longitude, title: location.title, snippet: location.snippet, id: location.locationTypeID)
         }
         self.clusterManager.cluster()
     }
     
-    func generatePOIItems(_ lat: Double, long: Double, title: String, snippet: String, id: LocationTypes) {
-        let item = POIItem(position: CLLocationCoordinate2DMake(lat, long), name: title, snippet: "", locationTypeID: id)
+    func setCoordinatesFromModel(data: CoordinatesModel) {
+        for item in data.features {
+            generatePOIItem(item.geometry.coordinates[1], long: item.geometry.coordinates[0], title: item.properties.title ?? "", snippet: item.properties.snippet ?? "", id: .zero)
+        }
+        clusterManager.cluster()
+    }
+    
+    func generatePOIItem(_ lat: Double, long: Double, title: String, snippet: String, id: LocationTypes) {
+        let item = POIItem(position: CLLocationCoordinate2DMake(lat, long), name: title, snippet: snippet, locationTypeID: id)
         clusterManager.add(item)
     }
     
@@ -155,16 +161,13 @@ extension MapViewController: GMSMapViewDelegate {
         guard let mapPoint = marker.userData as? POIItem else {
             return false
         }
-        mapMarker.map = nil
-        mapMarker = GMSMarker(position: mapPoint.position)
         if mapPoint.locationTypeID != .zero {
         marker.icon = UIImage(named: mapPoint.locationTypeID.rawValue)?.resize(maxWidthHeight: 25.0)
         } else {
         marker.icon = nil
         }
-        mapMarker.title = mapPoint.name
-        mapMarker.snippet = mapPoint.snippet
-        mapMarker.map = mapView
+        marker.title = mapPoint.name
+        marker.snippet = mapPoint.snippet
         infoMarkerDidAdd = true
         
         let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DataViewController") as! DataViewController
@@ -172,7 +175,7 @@ extension MapViewController: GMSMapViewDelegate {
         child.modalPresentationStyle = .custom
         
         present(child, animated: true)
-        return true
+        return false
     }
 }
 
