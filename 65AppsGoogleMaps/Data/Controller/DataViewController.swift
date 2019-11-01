@@ -14,6 +14,8 @@ class DataViewController: UIViewController {
     
     var photoNames = ["photo1", "photo2", "photo3", "photo4", "photo5"]
     
+    var viewModel = DataViewModel()
+    
     @IBOutlet weak var directionsButton: UIButton!
     @IBOutlet weak var callsButton: VerticallyButton!
     @IBOutlet weak var websiteButton: VerticallyButton!
@@ -29,6 +31,8 @@ class DataViewController: UIViewController {
     @IBOutlet weak var phoneView: UIView!
     @IBOutlet weak var websiteVIew: UIView!
     @IBOutlet weak var holdView: UIStackView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var snippetLabel: UILabel!
     
     @IBAction func closeAction(_ sender: Any) {
         self.dismiss(animated: true)
@@ -64,6 +68,9 @@ class DataViewController: UIViewController {
         shareButton.layer.cornerRadius = 9
         collectionView.delegate = self
         collectionView.dataSource = self
+        titleLabel.text = viewModel.title
+        snippetLabel.text = viewModel.snippet
+        
     }
     
     @objc func panGesture(_ gestureRecognizer: UIPanGestureRecognizer) {

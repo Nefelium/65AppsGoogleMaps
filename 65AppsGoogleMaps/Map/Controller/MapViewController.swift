@@ -17,7 +17,6 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
     private var clusterManager: GMUClusterManager!
     private var secondClusterManager: GMUClusterManager!
-    private let clusterItemGenerator = ClusterItemMaker()
     private let transition = PanelTransition()
     private var mapMarker = GMSMarker()
     private var infoMarkerDidAdd = false
@@ -109,7 +108,7 @@ class MapViewController: UIViewController {
         renderer.delegate = self
         clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm,
                                            renderer: renderer)
-        clusterItemGenerator.prepareItems(clusterManager: clusterManager)
+        viewModel.clusterItemGenerator.prepareItems(clusterManager: clusterManager)
         // Generate and add random items to the cluster manager.
         generateClusterItems(kCameraLatitude: 54.1893423, kCameraLongitude: 45.2810283)
     
@@ -173,7 +172,8 @@ extension MapViewController: GMSMapViewDelegate {
         let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DataViewController") as! DataViewController
         child.transitioningDelegate = transition
         child.modalPresentationStyle = .custom
-        
+        child.viewModel.title = marker.title ?? ""
+        child.viewModel.snippet = marker.snippet ?? ""
         present(child, animated: true)
         return false
     }

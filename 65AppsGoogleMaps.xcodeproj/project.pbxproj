@@ -49,6 +49,7 @@
 		073862A92350A72900F22148 /* CoorinatesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862A82350A72900F22148 /* CoorinatesMock.swift */; };
 		073862AC2350AF8D00F22148 /* ClusterItemMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862AB2350AF8D00F22148 /* ClusterItemMaker.swift */; };
 		073862B423544B5D00F22148 /* MapZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862B323544B5D00F22148 /* MapZoom.swift */; };
+		0762243A236C0796004BA066 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07622439236C0796004BA066 /* DataViewModel.swift */; };
 		0767E592235466C30092EEEC /* LocationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767E591235466C30092EEEC /* LocationTypes.swift */; };
 		0767E597235489410092EEEC /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767E596235489410092EEEC /* UIImage.swift */; };
 		0767E59923549CAA0092EEEC /* MapClusterIconGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767E59823549CAA0092EEEC /* MapClusterIconGenerator.swift */; };
@@ -186,6 +187,7 @@
 		073862A82350A72900F22148 /* CoorinatesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoorinatesMock.swift; sourceTree = "<group>"; };
 		073862AB2350AF8D00F22148 /* ClusterItemMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterItemMaker.swift; sourceTree = "<group>"; };
 		073862B323544B5D00F22148 /* MapZoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoom.swift; sourceTree = "<group>"; };
+		07622439236C0796004BA066 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		0767E591235466C30092EEEC /* LocationTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTypes.swift; sourceTree = "<group>"; };
 		0767E596235489410092EEEC /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		0767E59823549CAA0092EEEC /* MapClusterIconGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapClusterIconGenerator.swift; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 		07C7E6B7236AB0A800DD8FE1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				07622439236C0796004BA066 /* DataViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 				076C058F234E0ADF008517EE /* NibLoadable.swift in Sources */,
 				0767E592235466C30092EEEC /* LocationTypes.swift in Sources */,
 				073862A92350A72900F22148 /* CoorinatesMock.swift in Sources */,
+				0762243A236C0796004BA066 /* DataViewModel.swift in Sources */,
 				07965039234B4B1D005C72B2 /* InstantPanGestureRecognizer.swift in Sources */,
 				07386295235071CF00F22148 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				07386287235071CF00F22148 /* GMUPlacemark.m in Sources */,

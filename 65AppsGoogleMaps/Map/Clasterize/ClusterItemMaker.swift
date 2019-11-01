@@ -10,8 +10,13 @@ import Foundation
 import GoogleMaps
 
 class ClusterItemMaker {
-   let mapPoints = CoordinatesMock().data
-   
+    var mapPoints: [Point]
+  //  let mapPoints = CoordinatesMock().data
+    
+    init(mapPoints: [Point]) {
+        self.mapPoints = mapPoints
+    }
+    
    func prepareItems(clusterManager: GMUClusterManager) {
        for item in mapPoints {
         let position = CLLocationCoordinate2DMake(item.lattitude, item.longitude)
