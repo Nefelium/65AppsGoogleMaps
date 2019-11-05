@@ -16,10 +16,11 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: GMSMapView!
     private var clusterManager: GMUClusterManager!
-    private var secondClusterManager: GMUClusterManager!
+    private var renderer: GMUDefaultClusterRenderer!
     private let transition = PanelTransition()
     private var mapMarker = GMSMarker()
     private var infoMarkerDidAdd = false
+    private var clusterMaker = ClusterManager()
     
     private var kClusterItemCount = 10
     
@@ -41,14 +42,16 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        generateCustomClusterItems(kCameraLatitude: 51.2930419, kCameraLongitude: 14.2038475)
-        setupClusterManager()
         setupMapView()
         setupButtons()
+        (clusterManager, renderer) = clusterMaker.configureClusterManager(mapView: mapView, buckets: [5, 20, 50], colors: [.brown, .cyan, .magenta], mapPoints: CoordinatesMock().data)
+        renderer.delegate = self
+        clusterManager.setDelegate(self, mapDelegate: self)
         setMarkerForMap(locations: CoordinatesMock().typed)
         viewModel.configure {
             self.setCoordinatesFromModel(data: self.viewModel.data)
         }
+        clusterMaker.generateClusterItems(clusterManager: clusterManager, clusterItemCount: 10, kCameraLatitude: -13.38201457, kCameraLongitude: 24.39410334)
     }
 
     private func changeMapZoom(action: MapZoom) {
@@ -64,56 +67,6 @@ class MapViewController: UIViewController {
         let location = CLLocationCoordinate2D(latitude: CoordinatesMock().data[0].lattitude,
                                               longitude: CoordinatesMock().data[0].longitude)
         mapView.camera = GMSCameraPosition.camera(withTarget: location, zoom: 5.0)
-    }
-    
-    func generateClusterItems(kCameraLatitude: Double, kCameraLongitude: Double) {
-      let extent = 0.2
-      for index in 1...kClusterItemCount {
-        let lat = kCameraLatitude + extent * randomScale()
-        let lng = kCameraLongitude + extent * randomScale()
-        let name = "Item \(index)"
-        let item = POIItem(position: CLLocationCoordinate2DMake(lat, lng), name: name, snippet: "", locationTypeID: .zero)
-        clusterManager.add(item)
-      }
-    }
-    
-    func generateCustomClusterItems(kCameraLatitude: Double, kCameraLongitude: Double) {
-        let iconGenerator = GMUDefaultClusterIconGenerator(buckets: [5, 10, 15, 50, 100, 200, 500, 1000], backgroundColors: [.systemPink, .purple, .purple, .purple, .purple, .purple, .purple, .purple])
-            let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
-            let renderer = GMUDefaultClusterRenderer(mapView: mapView,
-                                                     clusterIconGenerator: iconGenerator)
-            secondClusterManager = GMUClusterManager(map: mapView, algorithm: algorithm,
-                                               renderer: renderer)
-            let extent = 0.2
-            for index in 1...kClusterItemCount {
-              let lat = kCameraLatitude + extent * randomScale()
-              let lng = kCameraLongitude + extent * randomScale()
-              let name = "Item \(index)"
-              let item = POIItem(position: CLLocationCoordinate2DMake(lat, lng), name: name, snippet: "", locationTypeID: .zero)
-              secondClusterManager.add(item)
-            }
-            secondClusterManager.cluster()
-            secondClusterManager.setDelegate(self, mapDelegate: self)
-    }
-    
-    private func randomScale() -> Double {
-      return Double(arc4random()) / Double(UINT32_MAX) * 3.0 - 2.0
-    }
-    
-    private func setupClusterManager() {
-        let iconGenerator = GMUDefaultClusterIconGenerator(buckets: [5, 10, 15, 20, 50, 100, 200, 300, 500, 1000], backgroundColors: [.green, .red, .blue, .brown, .darkGray, .lightGray, .magenta, .cyan, .purple, .systemBlue])
-        let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
-        let renderer = GMUDefaultClusterRenderer(mapView: mapView,
-                                                 clusterIconGenerator: iconGenerator)
-        renderer.delegate = self
-        clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm,
-                                           renderer: renderer)
-        viewModel.clusterItemGenerator.prepareItems(clusterManager: clusterManager)
-        // Generate and add random items to the cluster manager.
-        generateClusterItems(kCameraLatitude: 54.1893423, kCameraLongitude: 45.2810283)
-    
-        clusterManager.cluster()
-        clusterManager.setDelegate(self, mapDelegate: self)
     }
     
     func setMarkerForMap(locations: [Point]) {
@@ -197,5 +150,7 @@ extension MapViewController: GMUClusterManagerDelegate {
         mapView.animate(to: camera)
         return false
     }
+    
+    
 
 }

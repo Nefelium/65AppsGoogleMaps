@@ -13,7 +13,6 @@ class MapViewModel {
     // parsing local JSON with my coordinates
     var networkManager = NetworkManager()
     var data = CoordinatesModel()
-    var clusterItemGenerator = ClusterItemMaker(mapPoints: CoordinatesMock().data)
     
     func configure(completion: @escaping () -> Void) {
         networkManager.getCoordinates() { [weak self] result in

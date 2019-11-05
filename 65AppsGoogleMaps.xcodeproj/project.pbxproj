@@ -47,7 +47,6 @@
 		073862A0235079E100F22148 /* POIItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0738629F235079E100F22148 /* POIItem.swift */; };
 		073862A72350A62A00F22148 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862A62350A62A00F22148 /* Point.swift */; };
 		073862A92350A72900F22148 /* CoorinatesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862A82350A72900F22148 /* CoorinatesMock.swift */; };
-		073862AC2350AF8D00F22148 /* ClusterItemMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862AB2350AF8D00F22148 /* ClusterItemMaker.swift */; };
 		073862B423544B5D00F22148 /* MapZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862B323544B5D00F22148 /* MapZoom.swift */; };
 		0762243A236C0796004BA066 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07622439236C0796004BA066 /* DataViewModel.swift */; };
 		0767E592235466C30092EEEC /* LocationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767E591235466C30092EEEC /* LocationTypes.swift */; };
@@ -57,6 +56,7 @@
 		076C058F234E0ADF008517EE /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076C058E234E0ADF008517EE /* NibLoadable.swift */; };
 		076C0591234E0B65008517EE /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076C0590234E0B65008517EE /* Reusable.swift */; };
 		076C0595234E109F008517EE /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076C0594234E109F008517EE /* PhotoCell.swift */; };
+		0770B91C23715802003D557D /* ClusterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0770B91B23715802003D557D /* ClusterManager.swift */; };
 		07965033234B4B0B005C72B2 /* TransitionDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07965031234B4B0B005C72B2 /* TransitionDirection.swift */; };
 		07965034234B4B0B005C72B2 /* TransitionDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07965032234B4B0B005C72B2 /* TransitionDriver.swift */; };
 		07965039234B4B1D005C72B2 /* InstantPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07965035234B4B1C005C72B2 /* InstantPanGestureRecognizer.swift */; };
@@ -185,7 +185,6 @@
 		0738629F235079E100F22148 /* POIItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIItem.swift; sourceTree = "<group>"; };
 		073862A62350A62A00F22148 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		073862A82350A72900F22148 /* CoorinatesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoorinatesMock.swift; sourceTree = "<group>"; };
-		073862AB2350AF8D00F22148 /* ClusterItemMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterItemMaker.swift; sourceTree = "<group>"; };
 		073862B323544B5D00F22148 /* MapZoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoom.swift; sourceTree = "<group>"; };
 		07622439236C0796004BA066 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		0767E591235466C30092EEEC /* LocationTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTypes.swift; sourceTree = "<group>"; };
@@ -195,6 +194,7 @@
 		076C058E234E0ADF008517EE /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		076C0590234E0B65008517EE /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		076C0594234E109F008517EE /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		0770B91B23715802003D557D /* ClusterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterManager.swift; sourceTree = "<group>"; };
 		07965031234B4B0B005C72B2 /* TransitionDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDirection.swift; sourceTree = "<group>"; };
 		07965032234B4B0B005C72B2 /* TransitionDriver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDriver.swift; sourceTree = "<group>"; };
 		07965035234B4B1C005C72B2 /* InstantPanGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantPanGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				0767E59823549CAA0092EEEC /* MapClusterIconGenerator.swift */,
-				073862AB2350AF8D00F22148 /* ClusterItemMaker.swift */,
+				0770B91B23715802003D557D /* ClusterManager.swift */,
 			);
 			path = Clasterize;
 			sourceTree = "<group>";
@@ -748,7 +748,6 @@
 				07386296235071CF00F22148 /* GMUDefaultClusterRenderer.m in Sources */,
 				072CCE35234756F8007D0F77 /* MapViewController.swift in Sources */,
 				0738629A235071CF00F22148 /* GQTPointQuadTreeChild.m in Sources */,
-				073862AC2350AF8D00F22148 /* ClusterItemMaker.swift in Sources */,
 				07386299235071CF00F22148 /* GQTPointQuadTree.m in Sources */,
 				073862A0235079E100F22148 /* POIItem.swift in Sources */,
 				07965046234B4B35005C72B2 /* DismissAnimation.swift in Sources */,
@@ -769,6 +768,7 @@
 				0796503A234B4B1D005C72B2 /* Math.swift in Sources */,
 				07965045234B4B35005C72B2 /* PresentAnimation.swift in Sources */,
 				07386291235071CF00F22148 /* GMUClusterManager.m in Sources */,
+				0770B91C23715802003D557D /* ClusterManager.swift in Sources */,
 				0738628B235071CF00F22148 /* GMUGroundOverlay.m in Sources */,
 				0738628D235071CF00F22148 /* GMUPoint.m in Sources */,
 				07386293235071CF00F22148 /* GMUWrappingDictionaryKey.m in Sources */,
