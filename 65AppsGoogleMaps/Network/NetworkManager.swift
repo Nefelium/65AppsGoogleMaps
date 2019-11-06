@@ -21,12 +21,12 @@ let provider = MoyaProvider<MoyaService>()
         return decodedData
     }
     
-    func getCoordinates(completion: @escaping (CoordinatesModel) -> Void) {
+    func getCoordinates<T: Codable>(output structure: T.Type, completion: @escaping (T) -> Void) {
         provider.request(.getCoordinates) { [weak self] result in
             guard let self = self else { return }
              switch result {
              case .success(let response):
-                guard let decodedData = self.decodeData(data: response.data, to: CoordinatesModel.self) else { return }
+                guard let decodedData = self.decodeData(data: response.data, to: T.self) else { return }
                 completion(decodedData)
              case .failure(let error):
                  print(error.errorDescription ?? "Something gone wrong...")

@@ -15,7 +15,7 @@ class MapViewModel {
     var data = CoordinatesModel()
     
     func configure(completion: @escaping () -> Void) {
-        networkManager.getCoordinates() { [weak self] result in
+        networkManager.getCoordinates(output: CoordinatesModel.self) { [weak self] result in
             guard let self = self else { return }
             self.data = result
             completion()
