@@ -38,19 +38,4 @@ class ClusterManager {
         }
     }
     
-    // заглушка для данных - генерация элементов в определенной области
-    func generateClusterItems(clusterManager: GMUClusterManager, clusterItemCount: Int, kCameraLatitude: Double, kCameraLongitude: Double) {
-         let extent = 0.2
-         for index in 1...clusterItemCount {
-           let lat = kCameraLatitude + extent * randomScale()
-           let lng = kCameraLongitude + extent * randomScale()
-           let name = "Item \(index)"
-           let item = POIItem(position: CLLocationCoordinate2DMake(lat, lng), name: name, snippet: "[generated]", locationTypeID: .zero)
-           clusterManager.add(item)
-         }
-       }
-       
-       private func randomScale() -> Double {
-         return Double(arc4random()) / Double(UINT32_MAX) * 3.0 - 2.0
-       }
 }

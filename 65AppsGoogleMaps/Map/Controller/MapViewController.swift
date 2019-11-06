@@ -22,8 +22,6 @@ class MapViewController: UIViewController {
     private var infoMarkerDidAdd = false
     private var clusterMaker = ClusterManager()
     
-    private var kClusterItemCount = 10
-    
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     
@@ -44,14 +42,14 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         setupMapView()
         setupButtons()
-        (clusterManager, renderer) = clusterMaker.configureClusterManager(mapView: mapView, buckets: [5, 20, 50], colors: [.brown, .cyan, .magenta], mapPoints: CoordinatesMock().data)
+        (clusterManager, renderer) = clusterMaker.configureClusterManager(mapView: mapView, buckets: [5, 10, 20], colors: [.brown, .cyan, .magenta], mapPoints: CoordinatesMock().data)
         renderer.delegate = self
         clusterManager.setDelegate(self, mapDelegate: self)
         setMarkerForMap(locations: CoordinatesMock().typed)
         viewModel.configure {
-            self.setCoordinatesFromModel(data: self.viewModel.data)
+            self.viewModel.setCoordinatesFromModel(data: self.viewModel.data, clusterManager: self.clusterManager)
         }
-        clusterMaker.generateClusterItems(clusterManager: clusterManager, clusterItemCount: 10, kCameraLatitude: -13.38201457, kCameraLongitude: 24.39410334)
+        viewModel.generateClusterItems(clusterManager: clusterManager, clusterItemCount: 10, kCameraLatitude: -13.38201457, kCameraLongitude: 24.39410334)
     }
 
     private func changeMapZoom(action: MapZoom) {
@@ -81,21 +79,9 @@ class MapViewController: UIViewController {
             mapMarker.icon = image
 
             mapMarker.userData = location
-            self.generatePOIItem(location.lattitude, long: location.longitude, title: location.title, snippet: location.snippet, id: location.locationTypeID)
+            viewModel.generatePOIItem(clusterManager: clusterManager, lat: location.lattitude, long: location.longitude, title: location.title, snippet: location.snippet, id: location.locationTypeID)
         }
         self.clusterManager.cluster()
-    }
-    
-    func setCoordinatesFromModel(data: CoordinatesModel) {
-        for item in data.features {
-            generatePOIItem(item.geometry.coordinates[1], long: item.geometry.coordinates[0], title: item.properties.title ?? "", snippet: item.properties.snippet ?? "", id: .zero)
-        }
-        clusterManager.cluster()
-    }
-    
-    func generatePOIItem(_ lat: Double, long: Double, title: String, snippet: String, id: LocationTypes) {
-        let item = POIItem(position: CLLocationCoordinate2DMake(lat, long), name: title, snippet: snippet, locationTypeID: id)
-        clusterManager.add(item)
     }
     
 }
@@ -150,7 +136,5 @@ extension MapViewController: GMUClusterManagerDelegate {
         mapView.animate(to: camera)
         return false
     }
-    
-    
 
 }
