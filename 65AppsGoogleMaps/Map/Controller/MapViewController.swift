@@ -11,9 +11,9 @@ import GoogleMaps
 import GooglePlaces
 
 class MapViewController: UIViewController {
-    
+
     var viewModel = MapViewModel()
-    
+
     @IBOutlet weak var mapView: GMSMapView!
     private var clusterManager: GMUClusterManager!
     private var renderer: GMUDefaultClusterRenderer!
@@ -46,8 +46,10 @@ class MapViewController: UIViewController {
         renderer.delegate = self
         clusterManager.setDelegate(self, mapDelegate: self)
         setMarkerForMap(locations: CoordinatesMock().typed)
-        viewModel.configure {
+        viewModel.configure { [weak self] in
+            guard let self = self else { return }
             self.viewModel.setCoordinatesFromModel(data: self.viewModel.data, clusterManager: self.clusterManager)
+            self.clusterManager.cluster()
         }
         viewModel.generateClusterItems(clusterManager: clusterManager, clusterItemCount: 10, kCameraLatitude: -13.38201457, kCameraLongitude: 24.39410334)
     }

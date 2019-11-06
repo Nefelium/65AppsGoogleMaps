@@ -26,8 +26,8 @@ class PresentationController: UIPresentationController {
     
     override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
-        
-        containerView?.addSubview(presentedView!)
+        guard let presentedView = presentedView else { return }
+        containerView?.addSubview(presentedView)
         
     }
     

@@ -17,7 +17,6 @@ public extension UICollectionView {
         where T: Reusable & NibLoadable {
             self.register(cellType.nib, forCellWithReuseIdentifier: cellType.reuseIdentifier)
     }
-    
     final func register<T: UICollectionViewCell>(cellType: T.Type)
         where T: Reusable {
             self.register(cellType.self, forCellWithReuseIdentifier: cellType.reuseIdentifier)
