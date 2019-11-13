@@ -110,7 +110,7 @@ extension MapViewController: GMSMapViewDelegate {
         marker.snippet = mapPoint.snippet
         infoMarkerDidAdd = true
         
-        let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DataViewController") as! DataViewController
+        guard let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DataViewController") as? DataViewController else { return false}
         child.transitioningDelegate = transition
         child.modalPresentationStyle = .custom
         child.viewModel.title = marker.title ?? ""

@@ -10,7 +10,7 @@ import Foundation
 import GoogleMaps
 import GooglePlaces
 
-class ClusterManager {
+class ClusterManager: Clusterization {
     
     func configureClusterManager(mapView: GMSMapView, buckets: [NSNumber], colors: [UIColor], mapPoints: [Point]) -> (GMUClusterManager, GMUDefaultClusterRenderer) {
             let iconGenerator = makeIconGenerator(buckets: buckets, colors: colors)

@@ -48,6 +48,7 @@
 		073862A72350A62A00F22148 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862A62350A62A00F22148 /* Point.swift */; };
 		073862A92350A72900F22148 /* CoorinatesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862A82350A72900F22148 /* CoorinatesMock.swift */; };
 		073862B423544B5D00F22148 /* MapZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862B323544B5D00F22148 /* MapZoom.swift */; };
+		075B29D72375966200618FC7 /* Clusterization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075B29D62375966200618FC7 /* Clusterization.swift */; };
 		0762243A236C0796004BA066 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07622439236C0796004BA066 /* DataViewModel.swift */; };
 		0767E592235466C30092EEEC /* LocationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767E591235466C30092EEEC /* LocationTypes.swift */; };
 		0767E597235489410092EEEC /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767E596235489410092EEEC /* UIImage.swift */; };
@@ -186,6 +187,7 @@
 		073862A62350A62A00F22148 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		073862A82350A72900F22148 /* CoorinatesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoorinatesMock.swift; sourceTree = "<group>"; };
 		073862B323544B5D00F22148 /* MapZoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoom.swift; sourceTree = "<group>"; };
+		075B29D62375966200618FC7 /* Clusterization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clusterization.swift; sourceTree = "<group>"; };
 		07622439236C0796004BA066 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		0767E591235466C30092EEEC /* LocationTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTypes.swift; sourceTree = "<group>"; };
 		0767E596235489410092EEEC /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			children = (
 				076C058E234E0ADF008517EE /* NibLoadable.swift */,
 				076C0590234E0B65008517EE /* Reusable.swift */,
+				075B29D62375966200618FC7 /* Clusterization.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -692,8 +695,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		AF6E0B55AC1F0AE746EAC50A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -767,6 +769,7 @@
 				07386296235071CF00F22148 /* GMUDefaultClusterRenderer.m in Sources */,
 				072CCE35234756F8007D0F77 /* MapViewController.swift in Sources */,
 				0738629A235071CF00F22148 /* GQTPointQuadTreeChild.m in Sources */,
+				075B29D72375966200618FC7 /* Clusterization.swift in Sources */,
 				07386299235071CF00F22148 /* GQTPointQuadTree.m in Sources */,
 				073862A0235079E100F22148 /* POIItem.swift in Sources */,
 				07965046234B4B35005C72B2 /* DismissAnimation.swift in Sources */,

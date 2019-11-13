@@ -24,7 +24,12 @@ class MapViewModel {
     
     func setCoordinatesFromModel(data: CoordinatesModel, clusterManager: GMUClusterManager) {
         for item in data.features {
-            generatePOIItem(clusterManager: clusterManager, lat: item.geometry.coordinates[1], long: item.geometry.coordinates[0], title: item.properties.title ?? "", snippet: item.properties.snippet ?? "", id: .zero)
+            generatePOIItem(clusterManager: clusterManager,
+                            lat: item.geometry.coordinates[1],
+                            long: item.geometry.coordinates[0],
+                            title: item.properties.title ?? "",
+                            snippet: item.properties.snippet ?? "",
+                            id: .zero)
         }
     }
     

@@ -33,7 +33,4 @@ let provider = MoyaProvider<MoyaService>()
              }
         }
     }
-
-    
-
 }

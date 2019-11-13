@@ -34,7 +34,7 @@ class TransitionDriver: UIPercentDrivenInteractiveTransition {
             }
         }
         
-        set { }
+        set { _ = newValue }
     }
     
     // MARK: - Direction
