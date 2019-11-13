@@ -25,16 +25,15 @@ class MapViewModel {
     func setCoordinatesFromModel(data: CoordinatesModel, clusterManager: GMUClusterManager) {
         for item in data.features {
             generatePOIItem(clusterManager: clusterManager,
-                            lat: item.geometry.coordinates[1],
-                            long: item.geometry.coordinates[0],
-                            title: item.properties.title ?? "",
+                            position: CLLocationCoordinate2DMake(item.geometry.coordinates[1], item.geometry.coordinates[0]),
+                            name: item.properties.title ?? "",
                             snippet: item.properties.snippet ?? "",
                             id: .zero)
         }
     }
     
-    func generatePOIItem(clusterManager: GMUClusterManager, lat: Double, long: Double, title: String, snippet: String, id: LocationTypes) {
-        let item = POIItem(position: CLLocationCoordinate2DMake(lat, long), name: title, snippet: snippet, locationTypeID: id)
+    func generatePOIItem(clusterManager: GMUClusterManager, position: CLLocationCoordinate2D, name: String, snippet: String, id: LocationTypes) {
+        let item = POIItem(position: position, name: name, snippet: snippet, locationTypeID: id)
         clusterManager.add(item)
     }
     

@@ -64,15 +64,14 @@ class MapViewController: UIViewController {
        }
     
     func setupMapView() {
-        let location = CLLocationCoordinate2D(latitude: CoordinatesMock().data[0].lattitude,
-                                              longitude: CoordinatesMock().data[0].longitude)
+        let location = CoordinatesMock().data[0].position
         mapView.camera = GMSCameraPosition.camera(withTarget: location, zoom: 5.0)
     }
     
-    func setMarkerForMap(locations: [Point]) {
+    func setMarkerForMap(locations: [POIItem]) {
 
         for location in locations {
-            let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(location.lattitude), longitude: CLLocationDegrees(location.longitude))
+            let coordinate = location.position
             mapMarker.position = coordinate
 
             //set image
@@ -81,7 +80,11 @@ class MapViewController: UIViewController {
             mapMarker.icon = image
 
             mapMarker.userData = location
-            viewModel.generatePOIItem(clusterManager: clusterManager, lat: location.lattitude, long: location.longitude, title: location.title, snippet: location.snippet, id: location.locationTypeID)
+            viewModel.generatePOIItem(clusterManager: clusterManager,
+                                      position: location.position,
+                                      name: location.name,
+                                      snippet: location.snippet,
+                                      id: location.locationTypeID)
         }
         self.clusterManager.cluster()
     }

@@ -45,7 +45,6 @@
 		0738629C235071CF00F22148 /* GMUGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 07386282235071CF00F22148 /* GMUGradient.m */; };
 		0738629D235071CF00F22148 /* GMUHeatmapTileLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07386283235071CF00F22148 /* GMUHeatmapTileLayer.m */; };
 		073862A0235079E100F22148 /* POIItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0738629F235079E100F22148 /* POIItem.swift */; };
-		073862A72350A62A00F22148 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862A62350A62A00F22148 /* Point.swift */; };
 		073862A92350A72900F22148 /* CoorinatesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862A82350A72900F22148 /* CoorinatesMock.swift */; };
 		073862B423544B5D00F22148 /* MapZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862B323544B5D00F22148 /* MapZoom.swift */; };
 		075B29D72375966200618FC7 /* Clusterization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075B29D62375966200618FC7 /* Clusterization.swift */; };
@@ -184,7 +183,6 @@
 		07386283235071CF00F22148 /* GMUHeatmapTileLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUHeatmapTileLayer.m; sourceTree = "<group>"; };
 		0738629E2350745D00F22148 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		0738629F235079E100F22148 /* POIItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIItem.swift; sourceTree = "<group>"; };
-		073862A62350A62A00F22148 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		073862A82350A72900F22148 /* CoorinatesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoorinatesMock.swift; sourceTree = "<group>"; };
 		073862B323544B5D00F22148 /* MapZoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoom.swift; sourceTree = "<group>"; };
 		075B29D62375966200618FC7 /* Clusterization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clusterization.swift; sourceTree = "<group>"; };
@@ -403,7 +401,6 @@
 		073862A22350A60C00F22148 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				073862A62350A62A00F22148 /* Point.swift */,
 				0722B0FC235D9A64000BB03D /* CoordinatesModel.swift */,
 				0738629F235079E100F22148 /* POIItem.swift */,
 				073862A82350A72900F22148 /* CoorinatesMock.swift */,
@@ -782,7 +779,6 @@
 				072CCE33234756F8007D0F77 /* AppDelegate.swift in Sources */,
 				0738629D235071CF00F22148 /* GMUHeatmapTileLayer.m in Sources */,
 				07386289235071CF00F22148 /* GMUStyleMap.m in Sources */,
-				073862A72350A62A00F22148 /* Point.swift in Sources */,
 				0738628E235071CF00F22148 /* GMUPair.m in Sources */,
 				0722B0FD235D9A64000BB03D /* CoordinatesModel.swift in Sources */,
 				0767E59923549CAA0092EEEC /* MapClusterIconGenerator.swift in Sources */,
