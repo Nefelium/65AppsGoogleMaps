@@ -8,29 +8,50 @@
 
 import Foundation
 import Moya
+import Result
 
-class NetworkManager {
+protocol NetworkDataProvider: class {
+    func getCoordinates(completion: @escaping (CoordinatesModel?, Error?) -> Void)
+}
+
+class NetworkManager: NetworkDataProvider {
 
 let provider = MoyaProvider<MoyaService>()
-
-    private func decodeData<T: Codable>(data: Data, to structure: T.Type) -> T? {
-        guard let decodedData = try? JSONDecoder().decode(structure.self, from: data) else {
-            print("Something gone wrong while decoding...")
-            return nil
-        }
-        return decodedData
-    }
     
-    func getCoordinates(completion: @escaping (CoordinatesModel) -> Void) {
+    func getCoordinates(completion: @escaping (CoordinatesModel?, Error?) -> Void) {
         provider.request(.getCoordinates) { [weak self] result in
             guard let self = self else { return }
-             switch result {
-             case .success(let response):
-                guard let decodedData = self.decodeData(data: response.data, to: CoordinatesModel.self) else { return }
-                completion(decodedData)
-             case .failure(let error):
-                 print(error.errorDescription ?? "Something gone wrong...")
-             }
+            do {
+                let data = try self.handleResult(result: result, structure: CoordinatesModel.self)
+                completion(data, nil)
+            } catch {
+                completion(nil, error)
+            }
         }
+    }
+}
+
+extension NetworkManager {
+    
+   private func handleResult<T: Codable>(result: Result<Moya.Response, MoyaError>, structure: T.Type) throws -> T {
+        switch result {
+        case .success(let response):
+            do {
+                return try decodeData(data: response.data, to: structure.self)
+            } catch {
+                throw error
+            }
+        case.failure(let error):
+            throw error
+        }
+    }
+    
+    private func decodeData<T: Codable>(data: Data, to structure: T.Type) throws -> T {
+       do {
+           let decodedData = try JSONDecoder().decode(structure.self, from: data)
+           return decodedData
+       } catch {
+           throw error
+       }
     }
 }

@@ -15,8 +15,12 @@ class MapViewModel {
     var data = CoordinatesModel()
     
     func configure(completion: @escaping () -> Void) {
-        networkManager.getCoordinates { [weak self] result in
+        networkManager.getCoordinates { [weak self] result, error in
             guard let self = self else { return }
+            guard let result = result else {
+                guard let error = error else { return }
+                print(error.localizedDescription)
+                return }
             self.data = result
             completion()
         }
