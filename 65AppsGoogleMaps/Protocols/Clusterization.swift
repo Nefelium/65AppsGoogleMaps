@@ -10,5 +10,6 @@ import Foundation
 
 protocol Clusterization: class {
     
-    func configureClusterManager(mapView: GMSMapView, buckets: [NSNumber], colors: [UIColor], mapPoints: [POIItem]) -> (GMUClusterManager, GMUDefaultClusterRenderer)
+    func configureClusterManager(mapView: GMSMapView, buckets: [NSNumber], colors: [UIColor], mapPoints: [MapPointType]) -> (GMUClusterManager, GMUDefaultClusterRenderer)
+    func addItems(to clusterManager: GMUClusterManager, mapPoints: [MapPointType])
 }

@@ -10,9 +10,14 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class MapViewController: UIViewController {
+protocol MapViewControllerProtocol: class {
+    var viewModel: MapViewModel! { get set }
+    var clusterMaker: Clusterization! { get set }
+}
 
-    var viewModel = MapViewModel()
+class MapViewController: UIViewController, MapViewControllerProtocol {
+
+    var viewModel: MapViewModel!
 
     @IBOutlet weak var mapView: GMSMapView!
     private var clusterManager: GMUClusterManager!
@@ -20,7 +25,7 @@ class MapViewController: UIViewController {
     private let transition = PanelTransition()
     private var mapMarker = GMSMarker()
     private var infoMarkerDidAdd = false
-    private var clusterMaker = ClusterManager()
+    var clusterMaker: Clusterization!
     
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
@@ -42,18 +47,24 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         setupMapView()
         setupButtons()
-        (clusterManager, renderer) = clusterMaker.configureClusterManager(mapView: mapView, buckets: [5, 10, 20], colors: [.brown, .cyan, .magenta], mapPoints: CoordinatesMock().data)
-        renderer.delegate = self
-        clusterManager.setDelegate(self, mapDelegate: self)
+        initClusterManager()
+        viewModel.setCoordinatesFromModel()
+        viewModel.setCoordinatesFromServer()
         setMarkerForMap(locations: CoordinatesMock().typed)
-        viewModel.configure { [weak self] in
-            guard let self = self else { return }
-            self.viewModel.setCoordinatesFromModel(data: self.viewModel.data, clusterManager: self.clusterManager)
-            self.clusterManager.cluster()
-        }
         viewModel.generateClusterItems(clusterManager: clusterManager, clusterItemCount: 10, kCameraLatitude: -13.38201457, kCameraLongitude: 24.39410334)
+        self.clusterManager.cluster()
     }
 
+    private func initClusterManager() {
+        (clusterManager, renderer) =
+        clusterMaker.configureClusterManager(mapView: mapView,
+                                             buckets: Constants.buckets,
+                                             colors: Constants.colors,
+                                             mapPoints: [MapPointType]())
+        renderer.delegate = self
+        clusterManager.setDelegate(self, mapDelegate: self)
+    }
+    
     private func changeMapZoom(action: MapZoom) {
         mapMarker.map = nil
         let zoom = mapView.camera.zoom
@@ -68,11 +79,11 @@ class MapViewController: UIViewController {
         mapView.camera = GMSCameraPosition.camera(withTarget: location, zoom: 5.0)
     }
     
-    func setMarkerForMap(locations: [POIItem]) {
+    // Подход здесь отличается от остальных, надо что-то придумать
+    func setMarkerForMap(locations: [MapPointType]) {
 
         for location in locations {
-            let coordinate = location.position
-            mapMarker.position = coordinate
+            mapMarker.position = CLLocationCoordinate2DMake(location.lat, location.long)
 
             //set image
             let imageName = location.locationTypeID.rawValue
@@ -81,9 +92,9 @@ class MapViewController: UIViewController {
 
             mapMarker.userData = location
             viewModel.generatePOIItem(clusterManager: clusterManager,
-                                      position: location.position,
-                                      name: location.name,
-                                      snippet: location.snippet,
+                                      position: mapMarker.position,
+                                      name: location.name ?? "",
+                                      snippet: location.snippet ?? "",
                                       id: location.locationTypeID)
         }
         self.clusterManager.cluster()
@@ -142,4 +153,13 @@ extension MapViewController: GMUClusterManagerDelegate {
         return false
     }
 
+}
+
+extension MapViewController: GoogleMapsViewModelOutput {
+    
+    func showData(data: [MapPointType]) {
+        clusterMaker.addItems(to: clusterManager, mapPoints: data)
+        clusterManager.cluster()
+    }
+    
 }

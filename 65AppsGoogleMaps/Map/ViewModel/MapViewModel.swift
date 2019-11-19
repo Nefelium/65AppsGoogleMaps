@@ -8,36 +8,49 @@
 
 import Foundation
 
-class MapViewModel {
+protocol MapViewModelProtocol: class {
+    func setCoordinatesFromModel()
+    func generatePOIItem(clusterManager: GMUClusterManager, position: CLLocationCoordinate2D, name: String, snippet: String, id: LocationTypes)
+}
+
+class MapViewModel: MapViewModelProtocol {
+    
+    var view: GoogleMapsViewModelOutput?
+    var router: GoogleMapsRouterProtocol
     
     // parsing local JSON with my coordinates
-    var networkManager = NetworkManager()
-    var data = CoordinatesModel()
+    var networkManager: NetworkDataProvider
+    var data: [POIItem]
     
-    func configure(completion: @escaping () -> Void) {
+    init(view: GoogleMapsViewModelOutput?, router: GoogleMapsRouterProtocol, networkManager: NetworkDataProvider, data: [POIItem]) {
+        self.view = view
+        self.router = router
+        self.networkManager = networkManager
+        self.data = data
+    }
+    
+    func setCoordinatesFromServer() {
         networkManager.getCoordinates { [weak self] result, error in
             guard let self = self else { return }
             guard let result = result else {
                 guard let error = error else { return }
-                print(error.localizedDescription)
+                self.router.showAlert(message: error.localizedDescription)
                 return }
-            self.data = result
-            completion()
+            self.view?.showData(data: result.features)
         }
     }
     
-    func setCoordinatesFromModel(data: CoordinatesModel, clusterManager: GMUClusterManager) {
-        for item in data.features {
-            generatePOIItem(clusterManager: clusterManager,
-                            position: CLLocationCoordinate2DMake(item.geometry.coordinates[1], item.geometry.coordinates[0]),
-                            name: item.properties.title ?? "",
-                            snippet: item.properties.snippet ?? "",
-                            id: .zero)
-        }
+    func setCoordinatesFromModel() {
+     view?.showData(data: CoordinatesMock().data)
     }
     
     func generatePOIItem(clusterManager: GMUClusterManager, position: CLLocationCoordinate2D, name: String, snippet: String, id: LocationTypes) {
-        let item = POIItem(position: position, name: name, snippet: snippet, locationTypeID: id)
+        
+        let item = POIItem(lat: position.latitude,
+                           long: position.longitude,
+                           name: name,
+                           snippet: snippet,
+                           locationTypeID: id)
         clusterManager.add(item)
     }
     
@@ -46,9 +59,13 @@ class MapViewModel {
          let extent = 0.2
          for index in 1...clusterItemCount {
            let lat = kCameraLatitude + extent * randomScale()
-           let lng = kCameraLongitude + extent * randomScale()
+           let long = kCameraLongitude + extent * randomScale()
            let name = "Item \(index)"
-           let item = POIItem(position: CLLocationCoordinate2DMake(lat, lng), name: name, snippet: "[generated]", locationTypeID: .zero)
+            let item = POIItem(lat: lat,
+                               long: long,
+                               name: name,
+                               snippet: "[generated]",
+                               locationTypeID: .zero)
            clusterManager.add(item)
          }
        }

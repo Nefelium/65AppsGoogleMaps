@@ -9,16 +9,20 @@
 import Foundation
 
 /// Point of Interest Item which implements the GMUClusterItem protocol.
-class POIItem: NSObject, GMUClusterItem {
+class POIItem: NSObject, GMUClusterItem, MapPointType {
+    var lat: Double
+    var long: Double
     var position: CLLocationCoordinate2D
-    var name: String
-    var snippet: String
+    var name: String?
+    var snippet: String?
     var locationTypeID: LocationTypes
 
-    init(position: CLLocationCoordinate2D, name: String, snippet: String, locationTypeID: LocationTypes) {
-    self.position = position
-    self.name = name
-    self.snippet = snippet
-    self.locationTypeID = locationTypeID
-  }
+    init(lat: Double, long: Double, name: String?, snippet: String?, locationTypeID: LocationTypes) {
+        self.lat = lat
+        self.long = long
+        self.position = CLLocationCoordinate2DMake(self.lat, self.long)
+        self.name = name
+        self.snippet = snippet
+        self.locationTypeID = locationTypeID
+    }
 }

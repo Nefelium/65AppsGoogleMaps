@@ -18,6 +18,15 @@
 		072CCE3D234756FA007D0F77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 072CCE3B234756FA007D0F77 /* LaunchScreen.storyboard */; };
 		072CCE4523475F37007D0F77 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CCE4423475F37007D0F77 /* DataViewController.swift */; };
 		072CCE47234B1DB9007D0F77 /* VerticallyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CCE46234B1DB9007D0F77 /* VerticallyButton.swift */; };
+		07308851237E7CD0008D6E92 /* GoogleMapsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07308850237E7CD0008D6E92 /* GoogleMapsRouter.swift */; };
+		07308853237E834F008D6E92 /* GoogleMapsSceneModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07308852237E834F008D6E92 /* GoogleMapsSceneModule.swift */; };
+		07308855237E8941008D6E92 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07308854237E8941008D6E92 /* UIViewController.swift */; };
+		07308857237E99E6008D6E92 /* GoogleMapsViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07308856237E99E6008D6E92 /* GoogleMapsViewModelOutput.swift */; };
+		07308859237EB8BF008D6E92 /* Launcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07308858237EB8BF008D6E92 /* Launcher.swift */; };
+		0730885B238280BA008D6E92 /* ClusterConfigurationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0730885A238280BA008D6E92 /* ClusterConfigurationParameters.swift */; };
+		0730885D2382840C008D6E92 /* DataClusterConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0730885C2382840C008D6E92 /* DataClusterConfiguration.swift */; };
+		0730885F238287A3008D6E92 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0730885E238287A3008D6E92 /* Constants.swift */; };
+		073088632382C6DF008D6E92 /* MapPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073088622382C6DF008D6E92 /* MapPointType.swift */; };
 		07386284235071CF00F22148 /* GMUKMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0738623B235071CF00F22148 /* GMUKMLParser.m */; };
 		07386285235071CF00F22148 /* GMUGeometryRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0738623C235071CF00F22148 /* GMUGeometryRenderer.m */; };
 		07386286235071CF00F22148 /* GMUGeometryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0738623F235071CF00F22148 /* GMUGeometryCollection.m */; };
@@ -114,6 +123,15 @@
 		072CCE3E234756FA007D0F77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		072CCE4423475F37007D0F77 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		072CCE46234B1DB9007D0F77 /* VerticallyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyButton.swift; sourceTree = "<group>"; };
+		07308850237E7CD0008D6E92 /* GoogleMapsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsRouter.swift; sourceTree = "<group>"; };
+		07308852237E834F008D6E92 /* GoogleMapsSceneModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsSceneModule.swift; sourceTree = "<group>"; };
+		07308854237E8941008D6E92 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		07308856237E99E6008D6E92 /* GoogleMapsViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewModelOutput.swift; sourceTree = "<group>"; };
+		07308858237EB8BF008D6E92 /* Launcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launcher.swift; sourceTree = "<group>"; };
+		0730885A238280BA008D6E92 /* ClusterConfigurationParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterConfigurationParameters.swift; sourceTree = "<group>"; };
+		0730885C2382840C008D6E92 /* DataClusterConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClusterConfiguration.swift; sourceTree = "<group>"; };
+		0730885E238287A3008D6E92 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		073088622382C6DF008D6E92 /* MapPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPointType.swift; sourceTree = "<group>"; };
 		0738623B235071CF00F22148 /* GMUKMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUKMLParser.m; sourceTree = "<group>"; };
 		0738623C235071CF00F22148 /* GMUGeometryRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUGeometryRenderer.m; sourceTree = "<group>"; };
 		0738623D235071CF00F22148 /* GMUGeoJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUGeoJSONParser.h; sourceTree = "<group>"; };
@@ -254,6 +272,7 @@
 			children = (
 				0738623623506FB900F22148 /* Google-Maps-iOS-Utils */,
 				072CCE32234756F8007D0F77 /* AppDelegate.swift */,
+				07308858237EB8BF008D6E92 /* Launcher.swift */,
 				076C0587234E09F4008517EE /* Extensions */,
 				076C058B234E0A36008517EE /* Protocols */,
 				073862B223544B4400F22148 /* Enums */,
@@ -262,10 +281,19 @@
 				07C7E6AE236AB06C00DD8FE1 /* Map */,
 				0722B10A235DA472000BB03D /* Network */,
 				072CCE3E234756FA007D0F77 /* Info.plist */,
+				072CCE36234756F8007D0F77 /* Main.storyboard */,
 				072CCE39234756FA007D0F77 /* Assets.xcassets */,
 				0738629E2350745D00F22148 /* BridgingHeader.h */,
 			);
 			path = 65AppsGoogleMaps;
+			sourceTree = "<group>";
+		};
+		07308849237E7A77008D6E92 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				07308850237E7CD0008D6E92 /* GoogleMapsRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		0738623623506FB900F22148 /* Google-Maps-iOS-Utils */ = {
@@ -402,6 +430,8 @@
 			isa = PBXGroup;
 			children = (
 				0722B0FC235D9A64000BB03D /* CoordinatesModel.swift */,
+				0730885A238280BA008D6E92 /* ClusterConfigurationParameters.swift */,
+				0730885C2382840C008D6E92 /* DataClusterConfiguration.swift */,
 				0738629F235079E100F22148 /* POIItem.swift */,
 				073862A82350A72900F22148 /* CoorinatesMock.swift */,
 			);
@@ -413,6 +443,8 @@
 			children = (
 				0767E59823549CAA0092EEEC /* MapClusterIconGenerator.swift */,
 				0770B91B23715802003D557D /* ClusterManager.swift */,
+				073088622382C6DF008D6E92 /* MapPointType.swift */,
+				0730885E238287A3008D6E92 /* Constants.swift */,
 			);
 			path = Clasterize;
 			sourceTree = "<group>";
@@ -429,7 +461,6 @@
 		0767E59A2355A8C20092EEEC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				072CCE36234756F8007D0F77 /* Main.storyboard */,
 				076C0594234E109F008517EE /* PhotoCell.swift */,
 				072CCE46234B1DB9007D0F77 /* VerticallyButton.swift */,
 				072CCE3B234756FA007D0F77 /* LaunchScreen.storyboard */,
@@ -442,6 +473,7 @@
 			children = (
 				076C058C234E0A78008517EE /* UICollectionView+Reusable.swift */,
 				0767E596235489410092EEEC /* UIImage.swift */,
+				07308854237E8941008D6E92 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -452,6 +484,7 @@
 				076C058E234E0ADF008517EE /* NibLoadable.swift */,
 				076C0590234E0B65008517EE /* Reusable.swift */,
 				075B29D62375966200618FC7 /* Clusterization.swift */,
+				07308856237E99E6008D6E92 /* GoogleMapsViewModelOutput.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -502,10 +535,12 @@
 		07C7E6AE236AB06C00DD8FE1 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				07308849237E7A77008D6E92 /* Router */,
 				073862AA2350AF4800F22148 /* Clasterize */,
 				073862A22350A60C00F22148 /* Model */,
 				07C7E6B9236AB1A200DD8FE1 /* Controller */,
 				07C7E6BA236AB1AF00DD8FE1 /* ViewModel */,
+				07308852237E834F008D6E92 /* GoogleMapsSceneModule.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -745,6 +780,7 @@
 				0767E597235489410092EEEC /* UIImage.swift in Sources */,
 				0738629B235071CF00F22148 /* GMUWeightedLatLng.m in Sources */,
 				07965034234B4B0B005C72B2 /* TransitionDriver.swift in Sources */,
+				0730885D2382840C008D6E92 /* DataClusterConfiguration.swift in Sources */,
 				072CCE47234B1DB9007D0F77 /* VerticallyButton.swift in Sources */,
 				0722B111235DC2AA000BB03D /* MapViewModel.swift in Sources */,
 				07386284235071CF00F22148 /* GMUKMLParser.m in Sources */,
@@ -760,8 +796,10 @@
 				07965043234B4B35005C72B2 /* PresentationController.swift in Sources */,
 				073862B423544B5D00F22148 /* MapZoom.swift in Sources */,
 				0738629C235071CF00F22148 /* GMUGradient.m in Sources */,
+				07308853237E834F008D6E92 /* GoogleMapsSceneModule.swift in Sources */,
 				076C058D234E0A78008517EE /* UICollectionView+Reusable.swift in Sources */,
 				0738628F235071CF00F22148 /* GMULineString.m in Sources */,
+				07308855237E8941008D6E92 /* UIViewController.swift in Sources */,
 				07965033234B4B0B005C72B2 /* TransitionDirection.swift in Sources */,
 				07386296235071CF00F22148 /* GMUDefaultClusterRenderer.m in Sources */,
 				072CCE35234756F8007D0F77 /* MapViewController.swift in Sources */,
@@ -771,18 +809,23 @@
 				073862A0235079E100F22148 /* POIItem.swift in Sources */,
 				07965046234B4B35005C72B2 /* DismissAnimation.swift in Sources */,
 				07386290235071CF00F22148 /* GMUGeoJSONParser.m in Sources */,
+				0730885B238280BA008D6E92 /* ClusterConfigurationParameters.swift in Sources */,
 				072CCE4523475F37007D0F77 /* DataViewController.swift in Sources */,
 				07386294235071CF00F22148 /* GMUSimpleClusterAlgorithm.m in Sources */,
 				07386292235071CF00F22148 /* GMUGridBasedClusterAlgorithm.m in Sources */,
+				073088632382C6DF008D6E92 /* MapPointType.swift in Sources */,
 				07386288235071CF00F22148 /* GMUPolygon.m in Sources */,
+				0730885F238287A3008D6E92 /* Constants.swift in Sources */,
 				07386297235071CF00F22148 /* GMUDefaultClusterIconGenerator.m in Sources */,
 				072CCE33234756F8007D0F77 /* AppDelegate.swift in Sources */,
 				0738629D235071CF00F22148 /* GMUHeatmapTileLayer.m in Sources */,
+				07308859237EB8BF008D6E92 /* Launcher.swift in Sources */,
 				07386289235071CF00F22148 /* GMUStyleMap.m in Sources */,
 				0738628E235071CF00F22148 /* GMUPair.m in Sources */,
 				0722B0FD235D9A64000BB03D /* CoordinatesModel.swift in Sources */,
 				0767E59923549CAA0092EEEC /* MapClusterIconGenerator.swift in Sources */,
 				076C0591234E0B65008517EE /* Reusable.swift in Sources */,
+				07308857237E99E6008D6E92 /* GoogleMapsViewModelOutput.swift in Sources */,
 				0796503A234B4B1D005C72B2 /* Math.swift in Sources */,
 				07965045234B4B35005C72B2 /* PresentAnimation.swift in Sources */,
 				07386291235071CF00F22148 /* GMUClusterManager.m in Sources */,
@@ -794,6 +837,7 @@
 				0738628C235071CF00F22148 /* GMUStyle.m in Sources */,
 				0738628A235071CF00F22148 /* GMUFeature.m in Sources */,
 				07386285235071CF00F22148 /* GMUGeometryRenderer.m in Sources */,
+				07308851237E7CD0008D6E92 /* GoogleMapsRouter.swift in Sources */,
 				0796503B234B4B1D005C72B2 /* PanelTransition.swift in Sources */,
 				07386286235071CF00F22148 /* GMUGeometryCollection.m in Sources */,
 			);

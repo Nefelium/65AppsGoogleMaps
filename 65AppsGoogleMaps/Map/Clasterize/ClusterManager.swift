@@ -12,13 +12,13 @@ import GooglePlaces
 
 class ClusterManager: Clusterization {
     
-    func configureClusterManager(mapView: GMSMapView, buckets: [NSNumber], colors: [UIColor], mapPoints: [POIItem]) -> (GMUClusterManager, GMUDefaultClusterRenderer) {
+    func configureClusterManager(mapView: GMSMapView, buckets: [NSNumber], colors: [UIColor], mapPoints: [MapPointType]) -> (GMUClusterManager, GMUDefaultClusterRenderer) {
             let iconGenerator = makeIconGenerator(buckets: buckets, colors: colors)
             let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
             let renderer = GMUDefaultClusterRenderer(mapView: mapView, clusterIconGenerator: iconGenerator)
             
             let clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm, renderer: renderer)
-        prepareItems(clusterManager: clusterManager, mapPoints: mapPoints)
+     //   prepareItems(clusterManager: clusterManager, mapPoints: mapPoints)
             
             return (clusterManager, renderer)
         }
@@ -30,9 +30,9 @@ class ClusterManager: Clusterization {
         return iconGenerator
     }
     
-    private func prepareItems(clusterManager: GMUClusterManager, mapPoints: [POIItem]) {
+    func addItems(to clusterManager: GMUClusterManager, mapPoints: [MapPointType]) {
         for item in mapPoints {
-        let mapItem = POIItem(position: item.position, name: item.name, snippet: item.snippet, locationTypeID: .zero)
+            let mapItem = POIItem(lat: item.lat, long: item.long, name: item.name ?? "", snippet: item.snippet ?? "", locationTypeID: .zero)
          clusterManager.add(mapItem)
         }
     }
