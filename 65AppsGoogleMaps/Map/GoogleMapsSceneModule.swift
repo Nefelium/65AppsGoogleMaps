@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol GoogleMapsViewModelOutput: class {
+    func showData(data: [MapPointType])
+}
+
 class GoogleMapsSceneModule {
 
     var view: (UIViewController & MapViewControllerProtocol & GoogleMapsViewModelOutput)?
@@ -17,9 +21,13 @@ class GoogleMapsSceneModule {
     self.view = MapViewController.make()
         
         guard self.view != nil else { return }
+        let presenter = GoogleMapsPresenter(view: view)
+        let interactor = GoogleMapsInteractor(presenter: presenter, networkManager: networkManager)
         let router = GoogleMapsRouter(view: self.view)
-        let viewModel = MapViewModel(view: self.view, router: router, networkManager: networkManager, data: dataModel)
-        self.view?.viewModel = viewModel
+        
+        self.view?.presenter = presenter
+        presenter.interactor = interactor
+        presenter.router = router
         self.view?.clusterMaker = clusterConfigurator
     }
 }

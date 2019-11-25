@@ -11,21 +11,21 @@ import GoogleMaps
 import GooglePlaces
 
 protocol MapViewControllerProtocol: class {
-    var viewModel: MapViewModel! { get set }
     var clusterMaker: Clusterization! { get set }
+    var presenter: GoogleMapsPresenterProtocol! { get set }
+    func transitionController(title: String, snippet: String)
 }
 
 class MapViewController: UIViewController, MapViewControllerProtocol {
 
-    var viewModel: MapViewModel!
-
     @IBOutlet weak var mapView: GMSMapView!
     private var clusterManager: GMUClusterManager!
     private var renderer: GMUDefaultClusterRenderer!
-    private let transition = PanelTransition()
+    
     private var mapMarker = GMSMarker()
     private var infoMarkerDidAdd = false
     var clusterMaker: Clusterization!
+    var presenter: GoogleMapsPresenterProtocol!
     
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
@@ -48,10 +48,10 @@ class MapViewController: UIViewController, MapViewControllerProtocol {
         setupMapView()
         setupButtons()
         initClusterManager()
-        viewModel.setCoordinatesFromModel()
-        viewModel.setCoordinatesFromServer()
-        setMarkerForMap(locations: CoordinatesMock().typed)
-        viewModel.generateClusterItems(clusterManager: clusterManager, clusterItemCount: 10, kCameraLatitude: -13.38201457, kCameraLongitude: 24.39410334)
+        presenter.getCoordinatesFromModel()
+        presenter.getCoordinatesFromServer()
+        presenter.makeMarkersWithIcons(marker: mapMarker, locations: CoordinatesMock().typed, clusterManager: clusterManager)
+        presenter.makeClusterItems(clusterManager: clusterManager, clusterItemCount: 10, kCameraLatitude: -13.38201457, kCameraLongitude: 24.39410334)
         self.clusterManager.cluster()
     }
 
@@ -74,32 +74,10 @@ class MapViewController: UIViewController, MapViewControllerProtocol {
            }
        }
     
-    func setupMapView() {
+    private func setupMapView() {
         let location = CoordinatesMock().data[0].position
         mapView.camera = GMSCameraPosition.camera(withTarget: location, zoom: 5.0)
     }
-    
-    // Подход здесь отличается от остальных, надо что-то придумать
-    func setMarkerForMap(locations: [MapPointType]) {
-
-        for location in locations {
-            mapMarker.position = CLLocationCoordinate2DMake(location.lat, location.long)
-
-            //set image
-            let imageName = location.locationTypeID.rawValue
-            let image = UIImage(named: imageName)?.resize(maxWidthHeight: 25.0)
-            mapMarker.icon = image
-
-            mapMarker.userData = location
-            viewModel.generatePOIItem(clusterManager: clusterManager,
-                                      position: mapMarker.position,
-                                      name: location.name ?? "",
-                                      snippet: location.snippet ?? "",
-                                      id: location.locationTypeID)
-        }
-        self.clusterManager.cluster()
-    }
-    
 }
 
 extension MapViewController: GMSMapViewDelegate {
@@ -123,14 +101,18 @@ extension MapViewController: GMSMapViewDelegate {
         marker.title = mapPoint.name
         marker.snippet = mapPoint.snippet
         infoMarkerDidAdd = true
-        
-        guard let child = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DataViewController") as? DataViewController else { return false}
+        presenter.isMarkerTapped(title: marker.title ?? "", snippet: marker.snippet ?? "")
+        return false
+    }
+    
+    func transitionController(title: String, snippet: String) {
+        let transition = PanelTransition()
+        guard let child = DataSceneModule().view else { return }
         child.transitioningDelegate = transition
         child.modalPresentationStyle = .custom
-        child.viewModel.title = marker.title ?? ""
-        child.viewModel.snippet = marker.snippet ?? ""
+        child.presenter.pageTitle = title
+        child.presenter.snippet = snippet
         present(child, animated: true)
-        return false
     }
 }
 

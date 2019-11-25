@@ -8,13 +8,17 @@
 
 import UIKit
 
-class DataViewController: UIViewController {
+protocol DataViewControllerProtocol: class {
+    var presenter: DataScenePresenterProtocol! { get set }
+}
+
+class DataViewController: UIViewController, DataViewControllerProtocol {
 
     private var panRecognizer = UIPanGestureRecognizer()
     
     var photoNames = ["photo1", "photo2", "photo3", "photo4", "photo5"]
     
-    var viewModel = DataViewModel()
+    var presenter: DataScenePresenterProtocol!
     
     @IBOutlet weak var directionsButton: UIButton!
     @IBOutlet weak var callsButton: VerticallyButton!
@@ -68,9 +72,11 @@ class DataViewController: UIViewController {
         shareButton.layer.cornerRadius = 9
         collectionView.delegate = self
         collectionView.dataSource = self
-        titleLabel.text = viewModel.title
-        snippetLabel.text = viewModel.snippet
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        titleLabel.text = presenter.pageTitle
+        snippetLabel.text = presenter.snippet
     }
     
     @objc func panGesture(_ gestureRecognizer: UIPanGestureRecognizer) {

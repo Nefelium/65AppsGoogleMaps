@@ -33,25 +33,21 @@ let provider = MoyaProvider<MoyaService>()
 
 extension NetworkManager {
     
-   private func handleResult<T: Codable>(result: Result<Moya.Response, MoyaError>, structure: T.Type) throws -> T {
+    private func handleResult<T: Codable>(result: Result<Moya.Response, MoyaError>, structure: T.Type) throws -> T {
         switch result {
         case .success(let response):
-            do {
-                return try decodeData(data: response.data, to: structure.self)
-            } catch {
-                throw error
-            }
-        case.failure(let error):
+            return try decodeData(data: response.data, to: structure.self)
+        case .failure(let error):
             throw error
         }
     }
     
     private func decodeData<T: Codable>(data: Data, to structure: T.Type) throws -> T {
-       do {
-           let decodedData = try JSONDecoder().decode(structure.self, from: data)
-           return decodedData
-       } catch {
-           throw error
-       }
+        do {
+            let decodedData = try JSONDecoder().decode(structure.self, from: data)
+            return decodedData
+        } catch {
+            throw error
+        }
     }
 }

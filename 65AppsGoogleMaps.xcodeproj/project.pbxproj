@@ -10,7 +10,6 @@
 		0722B0FD235D9A64000BB03D /* CoordinatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0722B0FC235D9A64000BB03D /* CoordinatesModel.swift */; };
 		0722B10C235DA49F000BB03D /* MoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0722B10B235DA49F000BB03D /* MoyaService.swift */; };
 		0722B10E235DA967000BB03D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0722B10D235DA967000BB03D /* NetworkManager.swift */; };
-		0722B111235DC2AA000BB03D /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0722B110235DC2AA000BB03D /* MapViewModel.swift */; };
 		072CCE33234756F8007D0F77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CCE32234756F8007D0F77 /* AppDelegate.swift */; };
 		072CCE35234756F8007D0F77 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072CCE34234756F8007D0F77 /* MapViewController.swift */; };
 		072CCE38234756F8007D0F77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 072CCE36234756F8007D0F77 /* Main.storyboard */; };
@@ -21,7 +20,6 @@
 		07308851237E7CD0008D6E92 /* GoogleMapsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07308850237E7CD0008D6E92 /* GoogleMapsRouter.swift */; };
 		07308853237E834F008D6E92 /* GoogleMapsSceneModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07308852237E834F008D6E92 /* GoogleMapsSceneModule.swift */; };
 		07308855237E8941008D6E92 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07308854237E8941008D6E92 /* UIViewController.swift */; };
-		07308857237E99E6008D6E92 /* GoogleMapsViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07308856237E99E6008D6E92 /* GoogleMapsViewModelOutput.swift */; };
 		07308859237EB8BF008D6E92 /* Launcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07308858237EB8BF008D6E92 /* Launcher.swift */; };
 		0730885B238280BA008D6E92 /* ClusterConfigurationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0730885A238280BA008D6E92 /* ClusterConfigurationParameters.swift */; };
 		0730885D2382840C008D6E92 /* DataClusterConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0730885C2382840C008D6E92 /* DataClusterConfiguration.swift */; };
@@ -56,8 +54,6 @@
 		073862A0235079E100F22148 /* POIItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0738629F235079E100F22148 /* POIItem.swift */; };
 		073862A92350A72900F22148 /* CoorinatesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862A82350A72900F22148 /* CoorinatesMock.swift */; };
 		073862B423544B5D00F22148 /* MapZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073862B323544B5D00F22148 /* MapZoom.swift */; };
-		075B29D72375966200618FC7 /* Clusterization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075B29D62375966200618FC7 /* Clusterization.swift */; };
-		0762243A236C0796004BA066 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07622439236C0796004BA066 /* DataViewModel.swift */; };
 		0767E592235466C30092EEEC /* LocationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767E591235466C30092EEEC /* LocationTypes.swift */; };
 		0767E597235489410092EEEC /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767E596235489410092EEEC /* UIImage.swift */; };
 		0767E59923549CAA0092EEEC /* MapClusterIconGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0767E59823549CAA0092EEEC /* MapClusterIconGenerator.swift */; };
@@ -75,6 +71,12 @@
 		07965044234B4B35005C72B2 /* DimmPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0796503F234B4B35005C72B2 /* DimmPresentationController.swift */; };
 		07965045234B4B35005C72B2 /* PresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07965041234B4B35005C72B2 /* PresentAnimation.swift */; };
 		07965046234B4B35005C72B2 /* DismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07965042234B4B35005C72B2 /* DismissAnimation.swift */; };
+		07B61D3623850D930096F5A3 /* DataSceneModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D3523850D930096F5A3 /* DataSceneModule.swift */; };
+		07B61D3923851C150096F5A3 /* DataSceneRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D3823851C150096F5A3 /* DataSceneRouter.swift */; };
+		07B61D3D23853C930096F5A3 /* DataScenePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D3C23853C930096F5A3 /* DataScenePresenter.swift */; };
+		07B61D3F23853D360096F5A3 /* DataSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D3E23853D360096F5A3 /* DataSceneInteractor.swift */; };
+		07B61D412386C0580096F5A3 /* GoogleMapsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D402386C0580096F5A3 /* GoogleMapsPresenter.swift */; };
+		07B61D432386C82F0096F5A3 /* GoogleMapsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D422386C82F0096F5A3 /* GoogleMapsInteractor.swift */; };
 		913BBC9FA4099A2CE763922A /* libPods-65AppsGoogleMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8405DCC4ACC5D4122AFB37 /* libPods-65AppsGoogleMaps.a */; };
 /* End PBXBuildFile section */
 
@@ -113,7 +115,6 @@
 		0722B0FC235D9A64000BB03D /* CoordinatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatesModel.swift; sourceTree = "<group>"; };
 		0722B10B235DA49F000BB03D /* MoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaService.swift; sourceTree = "<group>"; };
 		0722B10D235DA967000BB03D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		0722B110235DC2AA000BB03D /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		072CCE2F234756F8007D0F77 /* 65AppsGoogleMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 65AppsGoogleMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		072CCE32234756F8007D0F77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		072CCE34234756F8007D0F77 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -126,7 +127,6 @@
 		07308850237E7CD0008D6E92 /* GoogleMapsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsRouter.swift; sourceTree = "<group>"; };
 		07308852237E834F008D6E92 /* GoogleMapsSceneModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsSceneModule.swift; sourceTree = "<group>"; };
 		07308854237E8941008D6E92 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		07308856237E99E6008D6E92 /* GoogleMapsViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewModelOutput.swift; sourceTree = "<group>"; };
 		07308858237EB8BF008D6E92 /* Launcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launcher.swift; sourceTree = "<group>"; };
 		0730885A238280BA008D6E92 /* ClusterConfigurationParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterConfigurationParameters.swift; sourceTree = "<group>"; };
 		0730885C2382840C008D6E92 /* DataClusterConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClusterConfiguration.swift; sourceTree = "<group>"; };
@@ -203,8 +203,6 @@
 		0738629F235079E100F22148 /* POIItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIItem.swift; sourceTree = "<group>"; };
 		073862A82350A72900F22148 /* CoorinatesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoorinatesMock.swift; sourceTree = "<group>"; };
 		073862B323544B5D00F22148 /* MapZoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoom.swift; sourceTree = "<group>"; };
-		075B29D62375966200618FC7 /* Clusterization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clusterization.swift; sourceTree = "<group>"; };
-		07622439236C0796004BA066 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		0767E591235466C30092EEEC /* LocationTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTypes.swift; sourceTree = "<group>"; };
 		0767E596235489410092EEEC /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		0767E59823549CAA0092EEEC /* MapClusterIconGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapClusterIconGenerator.swift; sourceTree = "<group>"; };
@@ -223,6 +221,12 @@
 		07965041234B4B35005C72B2 /* PresentAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAnimation.swift; sourceTree = "<group>"; };
 		07965042234B4B35005C72B2 /* DismissAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnimation.swift; sourceTree = "<group>"; };
 		07965047234B5E5E005C72B2 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		07B61D3523850D930096F5A3 /* DataSceneModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSceneModule.swift; sourceTree = "<group>"; };
+		07B61D3823851C150096F5A3 /* DataSceneRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSceneRouter.swift; sourceTree = "<group>"; };
+		07B61D3C23853C930096F5A3 /* DataScenePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScenePresenter.swift; sourceTree = "<group>"; };
+		07B61D3E23853D360096F5A3 /* DataSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSceneInteractor.swift; sourceTree = "<group>"; };
+		07B61D402386C0580096F5A3 /* GoogleMapsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsPresenter.swift; sourceTree = "<group>"; };
+		07B61D422386C82F0096F5A3 /* GoogleMapsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsInteractor.swift; sourceTree = "<group>"; };
 		08FC217596620E77F3C8C1CF /* Pods-65AppsGoogleMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-65AppsGoogleMaps.release.xcconfig"; path = "Target Support Files/Pods-65AppsGoogleMaps/Pods-65AppsGoogleMaps.release.xcconfig"; sourceTree = "<group>"; };
 		9A706D940010AC3FBB33F988 /* Pods-65AppsGoogleMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-65AppsGoogleMaps.debug.xcconfig"; path = "Target Support Files/Pods-65AppsGoogleMaps/Pods-65AppsGoogleMaps.debug.xcconfig"; sourceTree = "<group>"; };
 		DC8405DCC4ACC5D4122AFB37 /* libPods-65AppsGoogleMaps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-65AppsGoogleMaps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -286,14 +290,6 @@
 				0738629E2350745D00F22148 /* BridgingHeader.h */,
 			);
 			path = 65AppsGoogleMaps;
-			sourceTree = "<group>";
-		};
-		07308849237E7A77008D6E92 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				07308850237E7CD0008D6E92 /* GoogleMapsRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		0738623623506FB900F22148 /* Google-Maps-iOS-Utils */ = {
@@ -426,16 +422,18 @@
 			path = Heatmap;
 			sourceTree = "<group>";
 		};
-		073862A22350A60C00F22148 /* Model */ = {
+		073862A22350A60C00F22148 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				0730885E238287A3008D6E92 /* Constants.swift */,
+				073088622382C6DF008D6E92 /* MapPointType.swift */,
 				0722B0FC235D9A64000BB03D /* CoordinatesModel.swift */,
 				0730885A238280BA008D6E92 /* ClusterConfigurationParameters.swift */,
 				0730885C2382840C008D6E92 /* DataClusterConfiguration.swift */,
 				0738629F235079E100F22148 /* POIItem.swift */,
 				073862A82350A72900F22148 /* CoorinatesMock.swift */,
 			);
-			path = Model;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		073862AA2350AF4800F22148 /* Clasterize */ = {
@@ -443,8 +441,6 @@
 			children = (
 				0767E59823549CAA0092EEEC /* MapClusterIconGenerator.swift */,
 				0770B91B23715802003D557D /* ClusterManager.swift */,
-				073088622382C6DF008D6E92 /* MapPointType.swift */,
-				0730885E238287A3008D6E92 /* Constants.swift */,
 			);
 			path = Clasterize;
 			sourceTree = "<group>";
@@ -483,8 +479,6 @@
 			children = (
 				076C058E234E0ADF008517EE /* NibLoadable.swift */,
 				076C0590234E0B65008517EE /* Reusable.swift */,
-				075B29D62375966200618FC7 /* Clusterization.swift */,
-				07308856237E99E6008D6E92 /* GoogleMapsViewModelOutput.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -535,12 +529,13 @@
 		07C7E6AE236AB06C00DD8FE1 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				07308849237E7A77008D6E92 /* Router */,
 				073862AA2350AF4800F22148 /* Clasterize */,
-				073862A22350A60C00F22148 /* Model */,
-				07C7E6B9236AB1A200DD8FE1 /* Controller */,
-				07C7E6BA236AB1AF00DD8FE1 /* ViewModel */,
+				073862A22350A60C00F22148 /* Entity */,
+				072CCE34234756F8007D0F77 /* MapViewController.swift */,
+				07308850237E7CD0008D6E92 /* GoogleMapsRouter.swift */,
 				07308852237E834F008D6E92 /* GoogleMapsSceneModule.swift */,
+				07B61D422386C82F0096F5A3 /* GoogleMapsInteractor.swift */,
+				07B61D402386C0580096F5A3 /* GoogleMapsPresenter.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -549,42 +544,13 @@
 			isa = PBXGroup;
 			children = (
 				07965030234B4AEE005C72B2 /* Transition */,
-				07C7E6B8236AB0B600DD8FE1 /* Controller */,
-				07C7E6B7236AB0A800DD8FE1 /* ViewModel */,
+				07B61D3823851C150096F5A3 /* DataSceneRouter.swift */,
+				072CCE4423475F37007D0F77 /* DataViewController.swift */,
+				07B61D3523850D930096F5A3 /* DataSceneModule.swift */,
+				07B61D3C23853C930096F5A3 /* DataScenePresenter.swift */,
+				07B61D3E23853D360096F5A3 /* DataSceneInteractor.swift */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		07C7E6B7236AB0A800DD8FE1 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				07622439236C0796004BA066 /* DataViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		07C7E6B8236AB0B600DD8FE1 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				072CCE4423475F37007D0F77 /* DataViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		07C7E6B9236AB1A200DD8FE1 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				072CCE34234756F8007D0F77 /* MapViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		07C7E6BA236AB1AF00DD8FE1 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				0722B110235DC2AA000BB03D /* MapViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		379C4110EB868F0D5138EE78 /* Pods */ = {
@@ -776,19 +742,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				0722B10E235DA967000BB03D /* NetworkManager.swift in Sources */,
+				07B61D3D23853C930096F5A3 /* DataScenePresenter.swift in Sources */,
 				07965044234B4B35005C72B2 /* DimmPresentationController.swift in Sources */,
 				0767E597235489410092EEEC /* UIImage.swift in Sources */,
+				07B61D3F23853D360096F5A3 /* DataSceneInteractor.swift in Sources */,
 				0738629B235071CF00F22148 /* GMUWeightedLatLng.m in Sources */,
 				07965034234B4B0B005C72B2 /* TransitionDriver.swift in Sources */,
 				0730885D2382840C008D6E92 /* DataClusterConfiguration.swift in Sources */,
 				072CCE47234B1DB9007D0F77 /* VerticallyButton.swift in Sources */,
-				0722B111235DC2AA000BB03D /* MapViewModel.swift in Sources */,
 				07386284235071CF00F22148 /* GMUKMLParser.m in Sources */,
 				0722B10C235DA49F000BB03D /* MoyaService.swift in Sources */,
 				076C058F234E0ADF008517EE /* NibLoadable.swift in Sources */,
+				07B61D432386C82F0096F5A3 /* GoogleMapsInteractor.swift in Sources */,
 				0767E592235466C30092EEEC /* LocationTypes.swift in Sources */,
 				073862A92350A72900F22148 /* CoorinatesMock.swift in Sources */,
-				0762243A236C0796004BA066 /* DataViewModel.swift in Sources */,
 				07965039234B4B1D005C72B2 /* InstantPanGestureRecognizer.swift in Sources */,
 				07386295235071CF00F22148 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				07386287235071CF00F22148 /* GMUPlacemark.m in Sources */,
@@ -804,7 +771,6 @@
 				07386296235071CF00F22148 /* GMUDefaultClusterRenderer.m in Sources */,
 				072CCE35234756F8007D0F77 /* MapViewController.swift in Sources */,
 				0738629A235071CF00F22148 /* GQTPointQuadTreeChild.m in Sources */,
-				075B29D72375966200618FC7 /* Clusterization.swift in Sources */,
 				07386299235071CF00F22148 /* GQTPointQuadTree.m in Sources */,
 				073862A0235079E100F22148 /* POIItem.swift in Sources */,
 				07965046234B4B35005C72B2 /* DismissAnimation.swift in Sources */,
@@ -825,19 +791,21 @@
 				0722B0FD235D9A64000BB03D /* CoordinatesModel.swift in Sources */,
 				0767E59923549CAA0092EEEC /* MapClusterIconGenerator.swift in Sources */,
 				076C0591234E0B65008517EE /* Reusable.swift in Sources */,
-				07308857237E99E6008D6E92 /* GoogleMapsViewModelOutput.swift in Sources */,
 				0796503A234B4B1D005C72B2 /* Math.swift in Sources */,
+				07B61D3923851C150096F5A3 /* DataSceneRouter.swift in Sources */,
 				07965045234B4B35005C72B2 /* PresentAnimation.swift in Sources */,
 				07386291235071CF00F22148 /* GMUClusterManager.m in Sources */,
 				0770B91C23715802003D557D /* ClusterManager.swift in Sources */,
 				0738628B235071CF00F22148 /* GMUGroundOverlay.m in Sources */,
 				0738628D235071CF00F22148 /* GMUPoint.m in Sources */,
 				07386293235071CF00F22148 /* GMUWrappingDictionaryKey.m in Sources */,
+				07B61D3623850D930096F5A3 /* DataSceneModule.swift in Sources */,
 				07386298235071CF00F22148 /* GMUStaticCluster.m in Sources */,
 				0738628C235071CF00F22148 /* GMUStyle.m in Sources */,
 				0738628A235071CF00F22148 /* GMUFeature.m in Sources */,
 				07386285235071CF00F22148 /* GMUGeometryRenderer.m in Sources */,
 				07308851237E7CD0008D6E92 /* GoogleMapsRouter.swift in Sources */,
+				07B61D412386C0580096F5A3 /* GoogleMapsPresenter.swift in Sources */,
 				0796503B234B4B1D005C72B2 /* PanelTransition.swift in Sources */,
 				07386286235071CF00F22148 /* GMUGeometryCollection.m in Sources */,
 			);

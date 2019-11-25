@@ -9,15 +9,16 @@
 import Foundation
 
 protocol GoogleMapsRouterProtocol: class {
-    var view: UIViewController? { get set }
+    var view: (UIViewController & MapViewControllerProtocol)? { get set }
     func showAlert(message: String)
+    func goToDataViewController(title: String, snippet: String)
 }
 
 class GoogleMapsRouter: GoogleMapsRouterProtocol {
     
-    var view: UIViewController?
+    var view: (UIViewController & MapViewControllerProtocol)?
     
-    init(view: UIViewController?) {
+    init(view: (UIViewController & MapViewControllerProtocol)?) {
         self.view = view
     }
     
@@ -33,5 +34,9 @@ class GoogleMapsRouter: GoogleMapsRouterProtocol {
             currentAlert.message = (currentAlert.message ?? "") + "\n\nОбновлено: \(message)"
             return
         }
+    }
+    
+    func goToDataViewController(title: String, snippet: String) {
+        view?.transitionController(title: title, snippet: snippet)
     }
 }
