@@ -20,7 +20,7 @@ class DataSceneModule: DataSceneModuleProtocol {
         self.view = DataViewController.make()
         let presenter = DataScenePresenter(view: view)
         let interactor = DataSceneInteractor(presenter: presenter)
-        let router = DataSceneRouter(viewController: view)
+        let router = DataSceneRouter(view: view)
         
         view?.presenter = presenter
         presenter.interactor = interactor

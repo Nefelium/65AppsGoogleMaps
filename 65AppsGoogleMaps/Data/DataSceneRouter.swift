@@ -9,12 +9,18 @@
 import Foundation
 
 protocol DataSceneRouterProtocol: class {
-    
+    func closeViewController()
 }
 
 class DataSceneRouter: DataSceneRouterProtocol {
     
-    init(viewController: (UIViewController & DataViewControllerProtocol)?) {
-        
+    weak var view: (UIViewController & DataViewControllerProtocol)?
+    
+    init(view: (UIViewController & DataViewControllerProtocol)?) {
+        self.view = view
+    }
+    
+    func closeViewController() {
+        view?.dismiss(animated: true, completion: nil)
     }
 }

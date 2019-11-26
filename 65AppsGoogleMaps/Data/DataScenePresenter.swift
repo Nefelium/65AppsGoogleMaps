@@ -11,6 +11,7 @@ import Foundation
 protocol DataScenePresenterProtocol: class {
     var pageTitle: String? { get set }
     var snippet: String? { get set }
+    func closeButtonClicked()
 }
 
 class DataScenePresenter: DataScenePresenterProtocol {
@@ -24,5 +25,9 @@ class DataScenePresenter: DataScenePresenterProtocol {
     
     init(view: (UIViewController & DataViewControllerProtocol)?) {
         self.view = view
+    }
+    
+    func closeButtonClicked() {
+        router.closeViewController()
     }
 }

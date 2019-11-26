@@ -11,7 +11,6 @@ import GoogleMaps
 import GooglePlaces
 
 protocol Clusterization: class {
-    
     func configureClusterManager(mapView: GMSMapView, buckets: [NSNumber], colors: [UIColor], mapPoints: [MapPointType]) -> (GMUClusterManager, GMUDefaultClusterRenderer)
     func addItems(to clusterManager: GMUClusterManager, mapPoints: [MapPointType])
 }
@@ -24,8 +23,6 @@ class ClusterManager: Clusterization {
             let renderer = GMUDefaultClusterRenderer(mapView: mapView, clusterIconGenerator: iconGenerator)
             
             let clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm, renderer: renderer)
-     //   prepareItems(clusterManager: clusterManager, mapPoints: mapPoints)
-            
             return (clusterManager, renderer)
         }
     

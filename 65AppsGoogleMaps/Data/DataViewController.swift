@@ -39,15 +39,7 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
     @IBOutlet weak var snippetLabel: UILabel!
     
     @IBAction func closeAction(_ sender: Any) {
-        self.dismiss(animated: true)
-    }
-    
-    var fullContainer: CGRect {
-        let bounds = UIScreen.main.bounds
-        return CGRect(x: 0,
-                      y: 0, // 0 - page to top
-            width: bounds.width,
-            height: bounds.height) // bounds.height - full page
+        presenter.closeButtonClicked()
     }
     
     override func viewDidLoad() {
@@ -60,7 +52,7 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
     }
     
     @objc func dismissSelf() {
-        self.dismiss(animated: true)
+        presenter.closeButtonClicked()
     }
     
     private func setupUI() {
