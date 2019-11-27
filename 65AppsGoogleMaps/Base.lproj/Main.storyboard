@@ -164,6 +164,9 @@
 6 minute drive</string>
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="openDirections:" destination="xss-Xb-6X2" eventType="touchUpInside" id="pGj-Q0-o51"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -237,6 +240,9 @@
                                                                 <state key="normal" title="Call" image="phone_button">
                                                                     <color key="titleColor" red="0.0" green="0.45098039220000002" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="callsTapped:" destination="xss-Xb-6X2" eventType="touchUpInside" id="tal-ni-3el"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yh2-ZM-WKc" customClass="VerticallyButton" customModule="_5AppsGoogleMaps" customModuleProvider="target">
                                                                 <rect key="frame" x="98" y="0.0" width="88" height="52"/>
@@ -245,6 +251,9 @@
                                                                 <state key="normal" title="Website" image="website_button">
                                                                     <color key="titleColor" red="0.0" green="0.45098039220000002" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="websiteTapped:" destination="xss-Xb-6X2" eventType="touchUpInside" id="smv-1g-Or0"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTM-oi-8b5" customClass="VerticallyButton" customModule="_5AppsGoogleMaps" customModuleProvider="target">
                                                                 <rect key="frame" x="196" y="0.0" width="88" height="52"/>
@@ -253,6 +262,9 @@
                                                                 <state key="normal" title="Favourites" image="favourite_button">
                                                                     <color key="titleColor" red="0.0" green="0.45098039220000002" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="favoritesTapped:" destination="xss-Xb-6X2" eventType="touchUpInside" id="GSX-E8-mJl"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxt-7H-ixs" customClass="VerticallyButton" customModule="_5AppsGoogleMaps" customModuleProvider="target">
                                                                 <rect key="frame" x="294" y="0.0" width="88" height="52"/>
@@ -264,6 +276,9 @@
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Share"/>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="shareTapped:" destination="xss-Xb-6X2" eventType="touchUpInside" id="daV-d4-uSv"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>

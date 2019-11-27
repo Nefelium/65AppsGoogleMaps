@@ -17,7 +17,6 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
     private var panRecognizer = UIPanGestureRecognizer()
     
     var presenter: DataScenePresenterProtocol!
-    
     @IBOutlet weak var directionsButton: UIButton!
     @IBOutlet weak var callsButton: VerticallyButton!
     @IBOutlet weak var websiteButton: VerticallyButton!
@@ -35,6 +34,26 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
     @IBOutlet weak var holdView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var snippetLabel: UILabel!
+    
+    @IBAction func openDirections(_ sender: Any) {
+        presenter.openDirectionsClicked()
+    }
+    
+    @IBAction func callsTapped(_ sender: Any) {
+        presenter.callsTapped()
+    }
+    
+    @IBAction func websiteTapped(_ sender: Any) {
+        presenter.websiteTapped()
+    }
+    
+    @IBAction func favoritesTapped(_ sender: Any) {
+        presenter.favoritesTapped()
+    }
+    
+    @IBAction func shareTapped(_ sender: Any) {
+        presenter.shareTapped()
+    }
     
     @IBAction func closeAction(_ sender: Any) {
         presenter.closeButtonClicked()

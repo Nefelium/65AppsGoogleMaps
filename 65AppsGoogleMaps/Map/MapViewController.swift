@@ -51,7 +51,7 @@ class MapViewController: UIViewController, MapViewControllerProtocol {
         presenter.getCoordinatesFromModel()
         presenter.getCoordinatesFromServer()
         presenter.makeMarkersWithIcons(marker: mapMarker, locations: CoordinatesMock().typed, clusterManager: clusterManager)
-        presenter.makeClusterItems(clusterManager: clusterManager, clusterItemCount: 10, kCameraLatitude: -13.38201457, kCameraLongitude: 24.39410334)
+        presenter.makeClusterItems(clusterManager: clusterManager, clusterItemCount: 40, kCameraLatitude: -19.38201457, kCameraLongitude: 21.39410334)
         self.clusterManager.cluster()
     }
 

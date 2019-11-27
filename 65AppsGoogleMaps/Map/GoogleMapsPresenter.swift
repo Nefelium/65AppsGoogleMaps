@@ -53,9 +53,9 @@ class GoogleMapsPresenter: GoogleMapsPresenterProtocol {
                           kCameraLatitude: Double,
                           kCameraLongitude: Double) {
         interactor.generateClusterItems(clusterManager: clusterManager,
-                                        clusterItemCount: 10,
-                                        kCameraLatitude: -13.38201457,
-                                        kCameraLongitude: 24.39410334)
+                                        clusterItemCount: clusterItemCount,
+                                        kCameraLatitude: kCameraLatitude,
+                                        kCameraLongitude: kCameraLongitude)
     }
     
     func makeMarkersWithIcons(marker: GMSMarker, locations: [MapPointType], clusterManager: GMUClusterManager) {

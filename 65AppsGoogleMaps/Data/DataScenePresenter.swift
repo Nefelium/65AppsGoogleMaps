@@ -13,6 +13,11 @@ protocol DataScenePresenterProtocol: class {
     var snippet: String? { get set }
     var photoNames: [String] { get set }
     func closeButtonClicked()
+    func openDirectionsClicked()
+    func callsTapped()
+    func websiteTapped()
+    func favoritesTapped()
+    func shareTapped()
 }
 
 class DataScenePresenter: DataScenePresenterProtocol {
@@ -31,5 +36,25 @@ class DataScenePresenter: DataScenePresenterProtocol {
     
     func closeButtonClicked() {
         router.closeViewController()
+    }
+    
+    func openDirectionsClicked() {
+        
+    }
+    
+    func callsTapped() {
+        
+    }
+    
+    func websiteTapped() {
+        
+    }
+    
+    func favoritesTapped() {
+        
+    }
+    
+    func shareTapped() {
+        
     }
 }
