@@ -11,6 +11,7 @@ import Foundation
 protocol DataScenePresenterProtocol: class {
     var pageTitle: String? { get set }
     var snippet: String? { get set }
+    var photoNames: [String] { get set }
     func closeButtonClicked()
 }
 
@@ -20,6 +21,7 @@ class DataScenePresenter: DataScenePresenterProtocol {
     var interactor: DataSceneInteractorProtocol!
     var router: DataSceneRouterProtocol!
     
+    var photoNames = ["photo1", "photo2", "photo3", "photo4", "photo5"]
     var pageTitle: String?
     var snippet: String?
     

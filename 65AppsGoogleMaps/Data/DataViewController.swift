@@ -16,8 +16,6 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
 
     private var panRecognizer = UIPanGestureRecognizer()
     
-    var photoNames = ["photo1", "photo2", "photo3", "photo4", "photo5"]
-    
     var presenter: DataScenePresenterProtocol!
     
     @IBOutlet weak var directionsButton: UIButton!
@@ -98,12 +96,12 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
 extension DataViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoNames.count
+        return presenter.photoNames.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: PhotoCell.self)
-        cell.configure(data: photoNames[indexPath.item])
+        cell.configure(data: presenter.photoNames[indexPath.item])
             return cell
     }
     
