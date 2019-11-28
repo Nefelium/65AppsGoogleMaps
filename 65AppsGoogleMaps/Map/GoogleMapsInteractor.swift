@@ -10,9 +10,9 @@ import Foundation
 
 protocol GoogleMapsInteractorProtocol {
     var networkManager: NetworkDataProvider { get set }
-    var presenter: GoogleMapsPresenterProtocol! { get set }
-    func getCoordinatesFromServer()
-    func getCoordinatesFromModel()
+    var presenter: GoogleMapsPresenterProtocol? { get set }
+    func setCoordinatesFromServer()
+    func setCoordinatesFromModel()
     func generatePOIItem(clusterManager: GMUClusterManager,
                          position: CLLocationCoordinate2D,
                          name: String,
@@ -27,26 +27,26 @@ protocol GoogleMapsInteractorProtocol {
 class GoogleMapsInteractor: GoogleMapsInteractorProtocol {
     
     var networkManager: NetworkDataProvider
-    weak var presenter: GoogleMapsPresenterProtocol!
+    weak var presenter: GoogleMapsPresenterProtocol?
     
-    init(presenter: GoogleMapsPresenter, networkManager: NetworkDataProvider) {
-        self.presenter = presenter
+    init(networkManager: NetworkDataProvider) {
         self.networkManager = networkManager
     }
     
-    func getCoordinatesFromServer() {
-        networkManager.getCoordinates { [weak self] result, error in
-            guard let self = self else { return }
-            guard let result = result else {
-                guard let error = error else { return }
-                self.presenter.router.showAlert(message: error.localizedDescription)
-                return }
-            self.presenter.showData(data: result.features)
+    func setCoordinatesFromServer() {
+        networkManager.getCoordinates { [presenter] result, error in
+            if let error = error {
+                presenter?.router.showAlert(message: error.localizedDescription)
+                return
+            }
+            if let result = result {
+                presenter?.showData(data: result.features)
+            }
         }
     }
     
-    func getCoordinatesFromModel() {
-        presenter.showData(data: CoordinatesMock().data)
+    func setCoordinatesFromModel() {
+        presenter?.showData(data: CoordinatesMock().data)
     }
     
     func generatePOIItem(clusterManager: GMUClusterManager, position: CLLocationCoordinate2D, name: String, snippet: String, id: LocationTypes) {

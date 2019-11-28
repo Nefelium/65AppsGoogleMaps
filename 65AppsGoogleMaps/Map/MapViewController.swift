@@ -12,7 +12,7 @@ import GooglePlaces
 
 protocol MapViewControllerProtocol: class {
     var clusterMaker: Clusterization! { get set }
-    var presenter: GoogleMapsPresenterProtocol! { get set }
+    var presenter: GoogleMapsPresenterProtocol? { get set }
     func transitionController(title: String, snippet: String)
 }
 
@@ -25,7 +25,7 @@ class MapViewController: UIViewController, MapViewControllerProtocol {
     private var mapMarker = GMSMarker()
     private var infoMarkerDidAdd = false
     var clusterMaker: Clusterization!
-    var presenter: GoogleMapsPresenterProtocol!
+    var presenter: GoogleMapsPresenterProtocol?
     
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
@@ -48,10 +48,10 @@ class MapViewController: UIViewController, MapViewControllerProtocol {
         setupMapView()
         setupButtons()
         initClusterManager()
-        presenter.getCoordinatesFromModel()
-        presenter.getCoordinatesFromServer()
-        presenter.makeMarkersWithIcons(marker: mapMarker, locations: CoordinatesMock().typed, clusterManager: clusterManager)
-        presenter.makeClusterItems(clusterManager: clusterManager, clusterItemCount: 40, kCameraLatitude: -19.38201457, kCameraLongitude: 21.39410334)
+        presenter?.setCoordinatesFromModel()
+        presenter?.setCoordinatesFromServer()
+        makeMarkersWithIcons(marker: mapMarker, locations: CoordinatesMock().typed, clusterManager: clusterManager)
+        presenter?.makeClusterItems(clusterManager: clusterManager, clusterItemCount: 40, kCameraLatitude: -19.38201457, kCameraLongitude: 21.39410334)
         self.clusterManager.cluster()
     }
 
@@ -101,8 +101,27 @@ extension MapViewController: GMSMapViewDelegate {
         marker.title = mapPoint.name
         marker.snippet = mapPoint.snippet
         infoMarkerDidAdd = true
-        presenter.isMarkerTapped(title: marker.title ?? "", snippet: marker.snippet ?? "")
+        presenter?.isMarkerTapped(title: marker.title ?? "", snippet: marker.snippet ?? "")
         return false
+    }
+    
+    func makeMarkersWithIcons(marker: GMSMarker, locations: [MapPointType], clusterManager: GMUClusterManager) {
+        for location in locations {
+            marker.position = CLLocationCoordinate2DMake(location.lat, location.long)
+
+            //set image
+            let imageName = location.locationTypeID.rawValue
+            let image = UIImage(named: imageName)?.resize(maxWidthHeight: 25.0)
+            marker.icon = image
+
+            marker.userData = location
+            presenter?.interactor.generatePOIItem(clusterManager: clusterManager,
+                                      position: marker.position,
+                                      name: location.name ?? "",
+                                      snippet: location.snippet ?? "",
+                                      id: location.locationTypeID)
+        }
+        clusterManager.cluster()
     }
     
     func transitionController(title: String, snippet: String) {
@@ -110,8 +129,8 @@ extension MapViewController: GMSMapViewDelegate {
         guard let child = DataSceneModule().view else { return }
         child.transitioningDelegate = transition
         child.modalPresentationStyle = .custom
-        child.presenter.pageTitle = title
-        child.presenter.snippet = snippet
+        child.presenter?.pageTitle = title
+        child.presenter?.snippet = snippet
         present(child, animated: true)
     }
 }

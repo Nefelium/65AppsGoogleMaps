@@ -21,13 +21,12 @@ class GoogleMapsSceneModule {
     self.view = MapViewController.make()
         
         guard self.view != nil else { return }
-        let presenter = GoogleMapsPresenter(view: view)
-        let interactor = GoogleMapsInteractor(presenter: presenter, networkManager: networkManager)
         let router = GoogleMapsRouter(view: self.view)
+        let interactor = GoogleMapsInteractor(networkManager: networkManager)
+        let presenter = GoogleMapsPresenter(view: view, router: router, interactor: interactor)
         
         self.view?.presenter = presenter
-        presenter.interactor = interactor
-        presenter.router = router
+        interactor.presenter = presenter
         self.view?.clusterMaker = clusterConfigurator
     }
 }

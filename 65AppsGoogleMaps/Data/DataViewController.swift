@@ -9,14 +9,14 @@
 import UIKit
 
 protocol DataViewControllerProtocol: class {
-    var presenter: DataScenePresenterProtocol! { get set }
+    var presenter: DataScenePresenterProtocol? { get set }
 }
 
 class DataViewController: UIViewController, DataViewControllerProtocol {
 
     private var panRecognizer = UIPanGestureRecognizer()
     
-    var presenter: DataScenePresenterProtocol!
+    var presenter: DataScenePresenterProtocol?
     @IBOutlet weak var directionsButton: UIButton!
     @IBOutlet weak var callsButton: VerticallyButton!
     @IBOutlet weak var websiteButton: VerticallyButton!
@@ -36,27 +36,27 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
     @IBOutlet weak var snippetLabel: UILabel!
     
     @IBAction func openDirections(_ sender: Any) {
-        presenter.openDirectionsClicked()
+        presenter?.openDirectionsClicked()
     }
     
     @IBAction func callsTapped(_ sender: Any) {
-        presenter.callsTapped()
+        presenter?.callsTapped()
     }
     
     @IBAction func websiteTapped(_ sender: Any) {
-        presenter.websiteTapped()
+        presenter?.websiteTapped()
     }
     
     @IBAction func favoritesTapped(_ sender: Any) {
-        presenter.favoritesTapped()
+        presenter?.favoritesTapped()
     }
     
     @IBAction func shareTapped(_ sender: Any) {
-        presenter.shareTapped()
+        presenter?.shareTapped()
     }
     
     @IBAction func closeAction(_ sender: Any) {
-        presenter.closeButtonClicked()
+        presenter?.closeButtonClicked()
     }
     
     override func viewDidLoad() {
@@ -69,7 +69,7 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
     }
     
     @objc func dismissSelf() {
-        presenter.closeButtonClicked()
+        presenter?.closeButtonClicked()
     }
     
     private func setupUI() {
@@ -84,8 +84,9 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        titleLabel.text = presenter.pageTitle
-        snippetLabel.text = presenter.snippet
+        super.viewWillAppear(true)
+        titleLabel.text = presenter?.pageTitle
+        snippetLabel.text = presenter?.snippet
     }
     
     @objc func panGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
@@ -115,12 +116,12 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
 extension DataViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.photoNames.count
+        return presenter?.photoNames.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: PhotoCell.self)
-        cell.configure(data: presenter.photoNames[indexPath.item])
+        cell.configure(data: presenter?.photoNames[indexPath.item] ?? "")
             return cell
     }
     

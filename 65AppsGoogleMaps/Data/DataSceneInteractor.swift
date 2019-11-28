@@ -9,14 +9,12 @@
 import Foundation
 
 protocol DataSceneInteractorProtocol: class {
-    var presenter: DataScenePresenterProtocol! { get set }
+    var presenter: DataScenePresenterProtocol? { get set }
 }
 
 class DataSceneInteractor: DataSceneInteractorProtocol {
     
-    weak var presenter: DataScenePresenterProtocol!
+    weak var presenter: DataScenePresenterProtocol?
     
-    init(presenter: DataScenePresenter) {
-        self.presenter = presenter
-    }
+    
 }

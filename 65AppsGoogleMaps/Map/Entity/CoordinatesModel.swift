@@ -59,22 +59,22 @@ struct Geometry: Codable {
 extension FeaturesCoordinate: MapPointType {
 
     var lat: Double {
-        return self.geometry.coordinates[1]
+        return geometry.coordinates[1]
     }
 
     var long: Double {
-        return self.geometry.coordinates[0]
+        return geometry.coordinates[0]
     }
 
     var name: String? {
-        return self.properties.title
+        return properties.title
     }
 
     var snippet: String? {
-        return self.properties.snippet
+        return properties.snippet
     }
 
     var locationTypeID: LocationTypes {
-        return self.properties.locationTypeID ?? .zero
+        return properties.locationTypeID ?? .zero
     }
 }

@@ -9,6 +9,8 @@
 import Foundation
 
 protocol DataScenePresenterProtocol: class {
+    var interactor: DataSceneInteractorProtocol { get set }
+    var router: DataSceneRouterProtocol { get set }
     var pageTitle: String? { get set }
     var snippet: String? { get set }
     var photoNames: [String] { get set }
@@ -22,16 +24,20 @@ protocol DataScenePresenterProtocol: class {
 
 class DataScenePresenter: DataScenePresenterProtocol {
     
-    weak var view: (UIViewController & DataViewControllerProtocol)?
-    var interactor: DataSceneInteractorProtocol!
-    var router: DataSceneRouterProtocol!
+    weak var view: DataViewControllerProtocol?
+    var interactor: DataSceneInteractorProtocol
+    var router: DataSceneRouterProtocol
     
     var photoNames = ["photo1", "photo2", "photo3", "photo4", "photo5"]
     var pageTitle: String?
     var snippet: String?
     
-    init(view: (UIViewController & DataViewControllerProtocol)?) {
+    init(view: DataViewControllerProtocol?,
+         interactor: DataSceneInteractorProtocol,
+         router: DataSceneRouterProtocol) {
         self.view = view
+        self.interactor = interactor
+        self.router = router
     }
     
     func closeButtonClicked() {

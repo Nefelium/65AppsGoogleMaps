@@ -22,7 +22,7 @@ let provider = MoyaProvider<MoyaService>()
         provider.request(.getCoordinates) { [weak self] result in
             guard let self = self else { return }
             do {
-                let data = try self.handleResult(result: result, structure: CoordinatesModel.self)
+                let data = try self.handleResult(result: result, type: CoordinatesModel.self)
                 completion(data, nil)
             } catch {
                 completion(nil, error)
@@ -33,10 +33,10 @@ let provider = MoyaProvider<MoyaService>()
 
 extension NetworkManager {
     
-    private func handleResult<T: Codable>(result: Result<Moya.Response, MoyaError>, structure: T.Type) throws -> T {
+    private func handleResult<T: Codable>(result: Result<Moya.Response, MoyaError>, type: T.Type) throws -> T {
         switch result {
         case .success(let response):
-            return try decodeData(data: response.data, to: structure.self)
+            return try decodeData(data: response.data, to: type.self)
         case .failure(let error):
             throw error
         }
