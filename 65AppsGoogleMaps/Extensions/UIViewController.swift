@@ -15,7 +15,6 @@ extension UIViewController {
     }
     
     class func make<T>() -> T? {
-//    let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: self.id) as? T
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let vc = storyboard.instantiateViewController(withIdentifier: self.id) as? T
         dump(vc)

@@ -12,14 +12,18 @@ import GooglePlaces
 
 protocol MapViewControllerProtocol: class {
     var clusterMaker: Clusterization! { get set }
+    var clusterManager: GMUClusterManager! { get set }
     var presenter: GoogleMapsPresenterProtocol? { get set }
     func transitionController(title: String, snippet: String)
+    func initClusterManager()
+    func setupMapView()
+    func setupButtons()
 }
 
 class MapViewController: UIViewController, MapViewControllerProtocol {
 
     @IBOutlet weak var mapView: GMSMapView!
-    private var clusterManager: GMUClusterManager!
+    internal var clusterManager: GMUClusterManager!
     private var renderer: GMUDefaultClusterRenderer!
     
     private var mapMarker = GMSMarker()
@@ -38,24 +42,20 @@ class MapViewController: UIViewController, MapViewControllerProtocol {
         changeMapZoom(action: .zoomMinus)
     }
     
-    private func setupButtons() {
+    internal func setupButtons() {
         plusButton.layer.cornerRadius = 9
         minusButton.layer.cornerRadius = 9
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupMapView()
-        setupButtons()
-        initClusterManager()
-        presenter?.setCoordinatesFromModel()
-        presenter?.setCoordinatesFromServer()
+        presenter?.viewDidLoad()
         makeMarkersWithIcons(marker: mapMarker, locations: CoordinatesMock().typed, clusterManager: clusterManager)
         presenter?.makeClusterItems(clusterManager: clusterManager, clusterItemCount: 40, kCameraLatitude: -19.38201457, kCameraLongitude: 21.39410334)
         self.clusterManager.cluster()
     }
 
-    private func initClusterManager() {
+    internal func initClusterManager() {
         (clusterManager, renderer) =
         clusterMaker.configureClusterManager(mapView: mapView,
                                              buckets: Constants.buckets,
@@ -74,7 +74,7 @@ class MapViewController: UIViewController, MapViewControllerProtocol {
            }
        }
     
-    private func setupMapView() {
+    internal func setupMapView() {
         let location = CoordinatesMock().data[0].position
         mapView.camera = GMSCameraPosition.camera(withTarget: location, zoom: 5.0)
     }

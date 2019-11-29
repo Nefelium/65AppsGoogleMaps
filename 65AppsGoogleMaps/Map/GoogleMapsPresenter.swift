@@ -20,6 +20,7 @@ protocol GoogleMapsPresenterProtocol: class {
                           kCameraLatitude: Double,
                           kCameraLongitude: Double)
     func errorDidReceive(with message: String)
+    func viewDidLoad()
 }
 
 class GoogleMapsPresenter: GoogleMapsPresenterProtocol {
@@ -34,6 +35,14 @@ class GoogleMapsPresenter: GoogleMapsPresenterProtocol {
         self.view = view
         self.router = router
         self.interactor = interactor
+    }
+    
+    func viewDidLoad() {
+        view?.setupMapView()
+        view?.setupButtons()
+        view?.initClusterManager()
+        setCoordinatesFromModel()
+        setCoordinatesFromServer()
     }
     
     func setCoordinatesFromServer() {
