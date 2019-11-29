@@ -11,21 +11,21 @@ import Moya
 import Result
 
 protocol NetworkDataProvider: class {
-    func getCoordinates(completion: @escaping (CoordinatesModel?, Error?) -> Void)
+    func getCoordinates(completion: @escaping (Result<CoordinatesModel, Error>) -> Void)
 }
 
 class NetworkManager: NetworkDataProvider {
 
 let provider = MoyaProvider<MoyaService>()
     
-    func getCoordinates(completion: @escaping (CoordinatesModel?, Error?) -> Void) {
+    func getCoordinates(completion: @escaping (Result<CoordinatesModel, Error>) -> Void) {
         provider.request(.getCoordinates) { [weak self] result in
             guard let self = self else { return }
             do {
                 let data = try self.handleResult(result: result, type: CoordinatesModel.self)
-                completion(data, nil)
+                completion(.success(data))
             } catch {
-                completion(nil, error)
+                completion(.failure(error))
             }
         }
     }

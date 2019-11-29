@@ -34,13 +34,11 @@ class GoogleMapsInteractor: GoogleMapsInteractorProtocol {
     }
     
     func setCoordinatesFromServer() {
-        networkManager.getCoordinates { [presenter] result, error in
-            if let error = error {
-                presenter?.router.showAlert(message: error.localizedDescription)
-                return
-            }
-            if let result = result {
-                presenter?.showData(data: result.features)
+        networkManager.getCoordinates { [presenter] result in
+            if let data = try? result.get() {
+                presenter?.showData(data: data.features)
+            } else {
+                presenter?.errorDidReceive(with: result.error?.localizedDescription ?? "")
             }
         }
     }

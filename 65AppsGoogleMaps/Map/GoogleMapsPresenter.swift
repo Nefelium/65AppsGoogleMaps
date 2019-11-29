@@ -19,6 +19,7 @@ protocol GoogleMapsPresenterProtocol: class {
                           clusterItemCount: Int,
                           kCameraLatitude: Double,
                           kCameraLongitude: Double)
+    func errorDidReceive(with message: String)
 }
 
 class GoogleMapsPresenter: GoogleMapsPresenterProtocol {
@@ -45,6 +46,10 @@ class GoogleMapsPresenter: GoogleMapsPresenterProtocol {
     
     func showData(data: [MapPointType]) {
         view?.showData(data: data)
+    }
+    
+    func errorDidReceive(with message: String) {
+        router.showAlert(message: message)
     }
     
     func isMarkerTapped(title: String, snippet: String) {
