@@ -45,6 +45,7 @@ class GoogleMapsInteractor: GoogleMapsInteractorProtocol {
     
     func setCoordinatesFromModel() {
         presenter?.showData(data: CoordinatesMock().data)
+        presenter?.showData(data: CoordinatesMock().typed)
     }
     
     func generatePOIItem(clusterManager: GMUClusterManager, position: CLLocationCoordinate2D, name: String, snippet: String, id: LocationTypes) {

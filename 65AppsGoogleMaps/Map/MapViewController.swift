@@ -50,7 +50,6 @@ class MapViewController: UIViewController, MapViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
-        makeMarkersWithIcons(marker: mapMarker, locations: CoordinatesMock().typed, clusterManager: clusterManager)
         presenter?.makeClusterItems(clusterManager: clusterManager, clusterItemCount: 40, kCameraLatitude: -19.38201457, kCameraLongitude: 21.39410334)
         self.clusterManager.cluster()
     }
@@ -78,6 +77,16 @@ class MapViewController: UIViewController, MapViewControllerProtocol {
         let location = CoordinatesMock().data[0].position
         mapView.camera = GMSCameraPosition.camera(withTarget: location, zoom: 5.0)
     }
+    
+    func transitionController(title: String, snippet: String) {
+        let transition = PanelTransition()
+        guard let child = DataSceneModule().view else { return }
+        child.transitioningDelegate = transition
+        child.modalPresentationStyle = .custom
+        child.presenter?.pageTitle = title
+        child.presenter?.snippet = snippet
+        present(child, animated: true)
+    }
 }
 
 extension MapViewController: GMSMapViewDelegate {
@@ -93,56 +102,19 @@ extension MapViewController: GMSMapViewDelegate {
         guard let mapPoint = marker.userData as? POIItem else {
             return false
         }
-        if mapPoint.locationTypeID != .zero {
-        marker.icon = UIImage(named: mapPoint.locationTypeID.rawValue)?.resize(maxWidthHeight: 25.0)
-        } else {
-        marker.icon = nil
-        }
         marker.title = mapPoint.name
         marker.snippet = mapPoint.snippet
         infoMarkerDidAdd = true
         presenter?.isMarkerTapped(title: marker.title ?? "", snippet: marker.snippet ?? "")
         return false
     }
-    
-    func makeMarkersWithIcons(marker: GMSMarker, locations: [MapPointType], clusterManager: GMUClusterManager) {
-        for location in locations {
-            marker.position = CLLocationCoordinate2DMake(location.lat, location.long)
-
-            //set image
-            let imageName = location.locationTypeID.rawValue
-            let image = UIImage(named: imageName)?.resize(maxWidthHeight: 25.0)
-            marker.icon = image
-
-            marker.userData = location
-            presenter?.interactor.generatePOIItem(clusterManager: clusterManager,
-                                      position: marker.position,
-                                      name: location.name ?? "",
-                                      snippet: location.snippet ?? "",
-                                      id: location.locationTypeID)
-        }
-        clusterManager.cluster()
-    }
-    
-    func transitionController(title: String, snippet: String) {
-        let transition = PanelTransition()
-        guard let child = DataSceneModule().view else { return }
-        child.transitioningDelegate = transition
-        child.modalPresentationStyle = .custom
-        child.presenter?.pageTitle = title
-        child.presenter?.snippet = snippet
-        present(child, animated: true)
-    }
 }
 
 extension MapViewController: GMUClusterRendererDelegate {
     func renderer(_ renderer: GMUClusterRenderer, willRenderMarker marker: GMSMarker) {
         guard let itemMarker = marker.userData as? POIItem else { return }
-        if itemMarker.locationTypeID != .zero {
-        marker.icon = UIImage(named: itemMarker.locationTypeID.rawValue)?.resize(maxWidthHeight: 25.0)
-        } else {
-        marker.icon = nil
-        }
+        marker.icon = itemMarker.locationTypeID.icon?.resize(maxWidthHeight: 25.0)
+        print(itemMarker.locationTypeID)
     }
 }
 

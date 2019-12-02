@@ -9,8 +9,19 @@
 import Foundation
 
 enum LocationTypes: String {
-    case zero = ""
-    case man = "typeMan"
-    case step = "typeStep"
-    case bicycle = "typeBicycle"
+    case zero
+    case man
+    case step
+    case bicycle
+}
+
+extension LocationTypes {
+    var icon: UIImage? {
+        switch self {
+        case .zero: return nil
+        case .man: return UIImage(named: "typeMan")
+        case .step: return UIImage(named: "typeStep")
+        case .bicycle: return UIImage(named: "typeBicycle")
+        }
+    }
 }
