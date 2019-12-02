@@ -71,6 +71,7 @@
 		07965044234B4B35005C72B2 /* DimmPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0796503F234B4B35005C72B2 /* DimmPresentationController.swift */; };
 		07965045234B4B35005C72B2 /* PresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07965041234B4B35005C72B2 /* PresentAnimation.swift */; };
 		07965046234B4B35005C72B2 /* DismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07965042234B4B35005C72B2 /* DismissAnimation.swift */; };
+		07A82FC723954654004557E4 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A82FC623954654004557E4 /* RandomGenerator.swift */; };
 		07B61D3623850D930096F5A3 /* DataSceneModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D3523850D930096F5A3 /* DataSceneModule.swift */; };
 		07B61D3923851C150096F5A3 /* DataSceneRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D3823851C150096F5A3 /* DataSceneRouter.swift */; };
 		07B61D3D23853C930096F5A3 /* DataScenePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D3C23853C930096F5A3 /* DataScenePresenter.swift */; };
@@ -221,6 +222,7 @@
 		07965041234B4B35005C72B2 /* PresentAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAnimation.swift; sourceTree = "<group>"; };
 		07965042234B4B35005C72B2 /* DismissAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnimation.swift; sourceTree = "<group>"; };
 		07965047234B5E5E005C72B2 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		07A82FC623954654004557E4 /* RandomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
 		07B61D3523850D930096F5A3 /* DataSceneModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSceneModule.swift; sourceTree = "<group>"; };
 		07B61D3823851C150096F5A3 /* DataSceneRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSceneRouter.swift; sourceTree = "<group>"; };
 		07B61D3C23853C930096F5A3 /* DataScenePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScenePresenter.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 			children = (
 				0767E59823549CAA0092EEEC /* MapClusterIconGenerator.swift */,
 				0770B91B23715802003D557D /* ClusterManager.swift */,
+				07A82FC623954654004557E4 /* RandomGenerator.swift */,
 			);
 			path = Clasterize;
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				07386292235071CF00F22148 /* GMUGridBasedClusterAlgorithm.m in Sources */,
 				073088632382C6DF008D6E92 /* MapPointType.swift in Sources */,
 				07386288235071CF00F22148 /* GMUPolygon.m in Sources */,
+				07A82FC723954654004557E4 /* RandomGenerator.swift in Sources */,
 				0730885F238287A3008D6E92 /* Constants.swift in Sources */,
 				07386297235071CF00F22148 /* GMUDefaultClusterIconGenerator.m in Sources */,
 				072CCE33234756F8007D0F77 /* AppDelegate.swift in Sources */,

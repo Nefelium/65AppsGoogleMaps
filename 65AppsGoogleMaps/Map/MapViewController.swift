@@ -12,7 +12,6 @@ import GooglePlaces
 
 protocol MapViewControllerProtocol: class {
     var clusterMaker: Clusterization! { get set }
-    var clusterManager: GMUClusterManager! { get set }
     var presenter: GoogleMapsPresenterProtocol? { get set }
     func transitionController(title: String, snippet: String)
     func initClusterManager()
@@ -23,7 +22,7 @@ protocol MapViewControllerProtocol: class {
 class MapViewController: UIViewController, MapViewControllerProtocol {
 
     @IBOutlet weak var mapView: GMSMapView!
-    internal var clusterManager: GMUClusterManager!
+    private var clusterManager: GMUClusterManager!
     private var renderer: GMUDefaultClusterRenderer!
     
     private var mapMarker = GMSMarker()
@@ -42,7 +41,7 @@ class MapViewController: UIViewController, MapViewControllerProtocol {
         changeMapZoom(action: .zoomMinus)
     }
     
-    internal func setupButtons() {
+    func setupButtons() {
         plusButton.layer.cornerRadius = 9
         minusButton.layer.cornerRadius = 9
     }
@@ -50,11 +49,10 @@ class MapViewController: UIViewController, MapViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
-        presenter?.makeClusterItems(clusterManager: clusterManager, clusterItemCount: 40, kCameraLatitude: -19.38201457, kCameraLongitude: 21.39410334)
         self.clusterManager.cluster()
     }
 
-    internal func initClusterManager() {
+    func initClusterManager() {
         (clusterManager, renderer) =
         clusterMaker.configureClusterManager(mapView: mapView,
                                              buckets: Constants.buckets,
@@ -73,7 +71,7 @@ class MapViewController: UIViewController, MapViewControllerProtocol {
            }
        }
     
-    internal func setupMapView() {
+    func setupMapView() {
         let location = CoordinatesMock().data[0].position
         mapView.camera = GMSCameraPosition.camera(withTarget: location, zoom: 5.0)
     }
@@ -125,7 +123,6 @@ extension MapViewController: GMUClusterManagerDelegate {
         mapView.animate(to: camera)
         return false
     }
-
 }
 
 extension MapViewController: GoogleMapsViewModelOutput {
@@ -134,5 +131,4 @@ extension MapViewController: GoogleMapsViewModelOutput {
         clusterMaker.addItems(to: clusterManager, mapPoints: data)
         clusterManager.cluster()
     }
-    
 }

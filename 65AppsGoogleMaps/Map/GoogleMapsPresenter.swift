@@ -15,8 +15,7 @@ protocol GoogleMapsPresenterProtocol: class {
     func showData(data: [MapPointType])
     func setCoordinatesFromServer()
     func setCoordinatesFromModel()
-    func makeClusterItems(clusterManager: GMUClusterManager,
-                          clusterItemCount: Int,
+    func makeClusterItems(clusterItemCount: Int,
                           kCameraLatitude: Double,
                           kCameraLongitude: Double)
     func errorDidReceive(with message: String)
@@ -43,6 +42,8 @@ class GoogleMapsPresenter: GoogleMapsPresenterProtocol {
         view?.initClusterManager()
         setCoordinatesFromModel()
         setCoordinatesFromServer()
+        makeClusterItems(clusterItemCount: 30, kCameraLatitude: -13.38201457, kCameraLongitude: 21.39410334)
+        makeClusterItems(clusterItemCount: 22, kCameraLatitude: -73.92201851, kCameraLongitude: 9.31410334)
     }
     
     func setCoordinatesFromServer() {
@@ -65,13 +66,12 @@ class GoogleMapsPresenter: GoogleMapsPresenterProtocol {
         router.goToDataViewController(title: title, snippet: snippet)
     }
     
-    func makeClusterItems(clusterManager: GMUClusterManager,
-                          clusterItemCount: Int,
+    func makeClusterItems(clusterItemCount: Int,
                           kCameraLatitude: Double,
                           kCameraLongitude: Double) {
-        interactor.generateClusterItems(clusterManager: clusterManager,
-                                        clusterItemCount: clusterItemCount,
-                                        kCameraLatitude: kCameraLatitude,
-                                        kCameraLongitude: kCameraLongitude)
+        let generatedClusterItems = interactor.generateClusterItems(count: clusterItemCount,
+                                                                    lat: kCameraLatitude,
+                                                                    long: kCameraLongitude)
+        showData(data: generatedClusterItems)
     }
 }

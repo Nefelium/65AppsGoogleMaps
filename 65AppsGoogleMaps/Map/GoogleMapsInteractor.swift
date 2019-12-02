@@ -18,10 +18,7 @@ protocol GoogleMapsInteractorProtocol {
                          name: String,
                          snippet: String,
                          id: LocationTypes)
-    func generateClusterItems(clusterManager: GMUClusterManager,
-                              clusterItemCount: Int,
-                              kCameraLatitude: Double,
-                              kCameraLongitude: Double)
+    func generateClusterItems(count: Int, lat: Double, long: Double) -> [POIItem]
 }
 
 class GoogleMapsInteractor: GoogleMapsInteractorProtocol {
@@ -58,23 +55,7 @@ class GoogleMapsInteractor: GoogleMapsInteractorProtocol {
         clusterManager.add(item)
     }
     
-    // заглушка для данных - генерация элементов в определенной области
-    func generateClusterItems(clusterManager: GMUClusterManager, clusterItemCount: Int, kCameraLatitude: Double, kCameraLongitude: Double) {
-        let extent = 0.2
-        for index in 1...clusterItemCount {
-            let lat = kCameraLatitude + extent * randomScale()
-            let long = kCameraLongitude + extent * randomScale()
-            let name = "Item \(index)"
-            let item = POIItem(lat: lat,
-                               long: long,
-                               name: name,
-                               snippet: "[generated]",
-                               locationTypeID: .zero)
-            clusterManager.add(item)
-        }
-    }
-    
-    private func randomScale() -> Double {
-        return Double(arc4random()) / Double(UINT32_MAX) * 3.0 - 2.0
+    func generateClusterItems(count: Int, lat: Double, long: Double) -> [POIItem] {
+        return RandomGenerator.shared.generateClusterItems(clusterItemCount: count, kCameraLatitude: lat, kCameraLongitude: long)
     }
 }
