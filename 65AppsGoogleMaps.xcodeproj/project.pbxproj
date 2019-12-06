@@ -72,6 +72,10 @@
 		07965045234B4B35005C72B2 /* PresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07965041234B4B35005C72B2 /* PresentAnimation.swift */; };
 		07965046234B4B35005C72B2 /* DismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07965042234B4B35005C72B2 /* DismissAnimation.swift */; };
 		07A82FC723954654004557E4 /* RandomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A82FC623954654004557E4 /* RandomGenerator.swift */; };
+		07A82FCF239A2FC9004557E4 /* FakeMoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A82FCE239A2FC9004557E4 /* FakeMoyaService.swift */; };
+		07A82FD1239A37F8004557E4 /* FakeDataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A82FD0239A37F8004557E4 /* FakeDataFactory.swift */; };
+		07A82FD4239A3994004557E4 /* ObjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A82FD3239A3994004557E4 /* ObjectData.swift */; };
+		07A82FD6239A6573004557E4 /* FakeNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A82FD5239A6573004557E4 /* FakeNetworkManager.swift */; };
 		07B61D3623850D930096F5A3 /* DataSceneModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D3523850D930096F5A3 /* DataSceneModule.swift */; };
 		07B61D3923851C150096F5A3 /* DataSceneRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D3823851C150096F5A3 /* DataSceneRouter.swift */; };
 		07B61D3D23853C930096F5A3 /* DataScenePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D3C23853C930096F5A3 /* DataScenePresenter.swift */; };
@@ -223,6 +227,10 @@
 		07965042234B4B35005C72B2 /* DismissAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnimation.swift; sourceTree = "<group>"; };
 		07965047234B5E5E005C72B2 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		07A82FC623954654004557E4 /* RandomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomGenerator.swift; sourceTree = "<group>"; };
+		07A82FCE239A2FC9004557E4 /* FakeMoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMoyaService.swift; sourceTree = "<group>"; };
+		07A82FD0239A37F8004557E4 /* FakeDataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataFactory.swift; sourceTree = "<group>"; };
+		07A82FD3239A3994004557E4 /* ObjectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectData.swift; sourceTree = "<group>"; };
+		07A82FD5239A6573004557E4 /* FakeNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNetworkManager.swift; sourceTree = "<group>"; };
 		07B61D3523850D930096F5A3 /* DataSceneModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSceneModule.swift; sourceTree = "<group>"; };
 		07B61D3823851C150096F5A3 /* DataSceneRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSceneRouter.swift; sourceTree = "<group>"; };
 		07B61D3C23853C930096F5A3 /* DataScenePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScenePresenter.swift; sourceTree = "<group>"; };
@@ -250,7 +258,10 @@
 			isa = PBXGroup;
 			children = (
 				0722B10B235DA49F000BB03D /* MoyaService.swift */,
+				07A82FCE239A2FC9004557E4 /* FakeMoyaService.swift */,
+				07A82FD0239A37F8004557E4 /* FakeDataFactory.swift */,
 				0722B10D235DA967000BB03D /* NetworkManager.swift */,
+				07A82FD5239A6573004557E4 /* FakeNetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -529,6 +540,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		07A82FD2239A3978004557E4 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				07A82FD3239A3994004557E4 /* ObjectData.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		07C7E6AE236AB06C00DD8FE1 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,6 +566,7 @@
 			isa = PBXGroup;
 			children = (
 				07965030234B4AEE005C72B2 /* Transition */,
+				07A82FD2239A3978004557E4 /* Entity */,
 				07B61D3823851C150096F5A3 /* DataSceneRouter.swift */,
 				072CCE4423475F37007D0F77 /* DataViewController.swift */,
 				07B61D3523850D930096F5A3 /* DataSceneModule.swift */,
@@ -757,6 +777,7 @@
 				0722B10C235DA49F000BB03D /* MoyaService.swift in Sources */,
 				076C058F234E0ADF008517EE /* NibLoadable.swift in Sources */,
 				07B61D432386C82F0096F5A3 /* GoogleMapsInteractor.swift in Sources */,
+				07A82FD4239A3994004557E4 /* ObjectData.swift in Sources */,
 				0767E592235466C30092EEEC /* LocationTypes.swift in Sources */,
 				073862A92350A72900F22148 /* CoorinatesMock.swift in Sources */,
 				07965039234B4B1D005C72B2 /* InstantPanGestureRecognizer.swift in Sources */,
@@ -766,6 +787,7 @@
 				07965043234B4B35005C72B2 /* PresentationController.swift in Sources */,
 				073862B423544B5D00F22148 /* MapZoom.swift in Sources */,
 				0738629C235071CF00F22148 /* GMUGradient.m in Sources */,
+				07A82FD6239A6573004557E4 /* FakeNetworkManager.swift in Sources */,
 				07308853237E834F008D6E92 /* GoogleMapsSceneModule.swift in Sources */,
 				076C058D234E0A78008517EE /* UICollectionView+Reusable.swift in Sources */,
 				0738628F235071CF00F22148 /* GMULineString.m in Sources */,
@@ -774,6 +796,7 @@
 				07386296235071CF00F22148 /* GMUDefaultClusterRenderer.m in Sources */,
 				072CCE35234756F8007D0F77 /* MapViewController.swift in Sources */,
 				0738629A235071CF00F22148 /* GQTPointQuadTreeChild.m in Sources */,
+				07A82FCF239A2FC9004557E4 /* FakeMoyaService.swift in Sources */,
 				07386299235071CF00F22148 /* GQTPointQuadTree.m in Sources */,
 				073862A0235079E100F22148 /* POIItem.swift in Sources */,
 				07965046234B4B35005C72B2 /* DismissAnimation.swift in Sources */,
@@ -804,6 +827,7 @@
 				0738628D235071CF00F22148 /* GMUPoint.m in Sources */,
 				07386293235071CF00F22148 /* GMUWrappingDictionaryKey.m in Sources */,
 				07B61D3623850D930096F5A3 /* DataSceneModule.swift in Sources */,
+				07A82FD1239A37F8004557E4 /* FakeDataFactory.swift in Sources */,
 				07386298235071CF00F22148 /* GMUStaticCluster.m in Sources */,
 				0738628C235071CF00F22148 /* GMUStyle.m in Sources */,
 				0738628A235071CF00F22148 /* GMUFeature.m in Sources */,

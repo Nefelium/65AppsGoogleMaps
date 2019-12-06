@@ -24,4 +24,8 @@ extension LocationTypes {
         case .bicycle: return UIImage(named: "typeBicycle")
         }
     }
+    
+    var markerId: Int {
+        Int.random(in: 0...10)
+    }
 }

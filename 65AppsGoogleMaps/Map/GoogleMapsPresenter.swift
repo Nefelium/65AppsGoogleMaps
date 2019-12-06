@@ -11,8 +11,10 @@ import Foundation
 protocol GoogleMapsPresenterProtocol: class {
     var interactor: GoogleMapsInteractorProtocol { get set }
     var router: GoogleMapsRouterProtocol { get set }
-    func isMarkerTapped(title: String, snippet: String)
+ //   func isMarkerTapped(title: String, snippet: String)
+    func isMarkerTapped(id: Int)
     func showData(data: [MapPointType])
+    func goToDataPage(object: ObjectData)
     func setCoordinatesFromServer()
     func setCoordinatesFromModel()
     func makeClusterItems(clusterItemCount: Int,
@@ -58,12 +60,16 @@ class GoogleMapsPresenter: GoogleMapsPresenterProtocol {
         view?.showData(data: data)
     }
     
+    func goToDataPage(object: ObjectData) {
+        router.goToDataViewController(object: object)
+    }
+    
     func errorDidReceive(with message: String) {
         router.showAlert(message: message)
     }
     
-    func isMarkerTapped(title: String, snippet: String) {
-        router.goToDataViewController(title: title, snippet: snippet)
+    func isMarkerTapped(id: Int) {
+        interactor.setFakeDataFromServer(id: id)
     }
     
     func makeClusterItems(clusterItemCount: Int,

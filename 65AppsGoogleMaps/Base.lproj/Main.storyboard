@@ -530,6 +530,7 @@
                         <outlet property="hoursView" destination="RTX-GX-mdj" id="x0V-sg-9TO"/>
                         <outlet property="menuView" destination="CU9-MN-zPF" id="ZqE-2E-X8K"/>
                         <outlet property="phoneView" destination="M1C-x1-hOb" id="8Cz-h4-4u1"/>
+                        <outlet property="ratingLabel" destination="BES-pi-AeA" id="zkd-Zi-e0Q"/>
                         <outlet property="shareButton" destination="Vxt-7H-ixs" id="29u-Jx-U58"/>
                         <outlet property="snippetLabel" destination="4un-uS-HTt" id="APp-1B-Ubv"/>
                         <outlet property="titleLabel" destination="igF-2O-Pl7" id="d6t-Xz-mvH"/>

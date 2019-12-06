@@ -14,6 +14,7 @@ protocol MapViewControllerProtocol: class {
     var clusterMaker: Clusterization! { get set }
     var presenter: GoogleMapsPresenterProtocol? { get set }
     func transitionController(title: String, snippet: String)
+    func transitionController(object: ObjectData)
     func initClusterManager()
     func setupMapView()
     func setupButtons()
@@ -85,6 +86,15 @@ class MapViewController: UIViewController, MapViewControllerProtocol {
         child.presenter?.snippet = snippet
         present(child, animated: true)
     }
+    
+    func transitionController(object: ObjectData) {
+        let transition = PanelTransition()
+        guard let child = DataSceneModule().view else { return }
+        child.transitioningDelegate = transition
+        child.modalPresentationStyle = .custom
+        child.presenter?.object = object
+        present(child, animated: true)
+    }
 }
 
 extension MapViewController: GMSMapViewDelegate {
@@ -103,7 +113,8 @@ extension MapViewController: GMSMapViewDelegate {
         marker.title = mapPoint.name
         marker.snippet = mapPoint.snippet
         infoMarkerDidAdd = true
-        presenter?.isMarkerTapped(title: marker.title ?? "", snippet: marker.snippet ?? "")
+        presenter?.isMarkerTapped(id: mapPoint.locationTypeID.markerId)
+      //  presenter?.isMarkerTapped(title: marker.title ?? "", snippet: marker.snippet ?? "")
         return false
     }
 }
@@ -112,7 +123,6 @@ extension MapViewController: GMUClusterRendererDelegate {
     func renderer(_ renderer: GMUClusterRenderer, willRenderMarker marker: GMSMarker) {
         guard let itemMarker = marker.userData as? POIItem else { return }
         marker.icon = itemMarker.locationTypeID.icon?.resize(maxWidthHeight: 25.0)
-        print(itemMarker.locationTypeID)
     }
 }
 

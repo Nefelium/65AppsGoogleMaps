@@ -11,6 +11,7 @@ import Foundation
 protocol GoogleMapsRouterProtocol: class {
     var view: (UIViewController & MapViewControllerProtocol)? { get set }
     func showAlert(message: String)
+    func goToDataViewController(object: ObjectData)
     func goToDataViewController(title: String, snippet: String)
 }
 
@@ -35,6 +36,10 @@ class GoogleMapsRouter: GoogleMapsRouterProtocol {
             return
         }
     }
+    
+    func goToDataViewController(object: ObjectData) {
+            view?.transitionController(object: object)
+        }
     
     func goToDataViewController(title: String, snippet: String) {
         view?.transitionController(title: title, snippet: snippet)

@@ -10,9 +10,11 @@ import Foundation
 
 protocol GoogleMapsInteractorProtocol {
     var networkManager: NetworkDataProvider { get set }
+    var fakeNetworkManager: FakeNetworkDataProvider { get set }
     var presenter: GoogleMapsPresenterProtocol? { get set }
     func setCoordinatesFromServer()
     func setCoordinatesFromModel()
+    func setFakeDataFromServer(id: Int)
     func generatePOIItem(clusterManager: GMUClusterManager,
                          position: CLLocationCoordinate2D,
                          name: String,
@@ -24,16 +26,28 @@ protocol GoogleMapsInteractorProtocol {
 class GoogleMapsInteractor: GoogleMapsInteractorProtocol {
     
     var networkManager: NetworkDataProvider
+    var fakeNetworkManager: FakeNetworkDataProvider
     weak var presenter: GoogleMapsPresenterProtocol?
     
-    init(networkManager: NetworkDataProvider) {
+    init(networkManager: NetworkDataProvider, fakeNetworkManager: FakeNetworkDataProvider) {
         self.networkManager = networkManager
+        self.fakeNetworkManager = fakeNetworkManager
     }
     
     func setCoordinatesFromServer() {
         networkManager.getCoordinates { [presenter] result in
             if let data = try? result.get() {
                 presenter?.showData(data: data.features)
+            } else {
+                presenter?.errorDidReceive(with: result.error?.localizedDescription ?? "")
+            }
+        }
+    }
+    
+    func setFakeDataFromServer(id: Int) {
+        fakeNetworkManager.getCoordinates(id: id) { [presenter] result in
+            if let data = try? result.get() {
+                presenter?.goToDataPage(object: data)
             } else {
                 presenter?.errorDidReceive(with: result.error?.localizedDescription ?? "")
             }

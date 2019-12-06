@@ -13,6 +13,7 @@ protocol DataScenePresenterProtocol: class {
     var router: DataSceneRouterProtocol { get set }
     var pageTitle: String? { get set }
     var snippet: String? { get set }
+    var object: ObjectData { get set }
     var photoNames: [String] { get set }
     func closeButtonClicked()
     func openDirectionsClicked()
@@ -31,6 +32,7 @@ class DataScenePresenter: DataScenePresenterProtocol {
     var photoNames = ["photo1", "photo2", "photo3", "photo4", "photo5"]
     var pageTitle: String?
     var snippet: String?
+    var object = ObjectData()
     
     init(view: DataViewControllerProtocol?,
          interactor: DataSceneInteractorProtocol,

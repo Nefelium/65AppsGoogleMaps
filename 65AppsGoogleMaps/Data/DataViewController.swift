@@ -25,6 +25,7 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
     
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var hoursView: UIView!
@@ -85,8 +86,17 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        titleLabel.text = presenter?.pageTitle
-        snippetLabel.text = presenter?.snippet
+        guard let presenter = presenter else { return }
+        fillUIData(object: presenter.object)
+//        titleLabel.text = presenter?.pageTitle
+//        snippetLabel.text = presenter?.snippet
+    }
+    
+    func fillUIData(object: ObjectData) {
+        titleLabel.text = object.title
+        snippetLabel.text = object.snippet
+        ratingLabel.text = "\((object.rating)) on Yelp"
+        directionsButton.setTitle("Directions /n \(object.direction) minute drive", for: .normal)
     }
     
     @objc func panGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
