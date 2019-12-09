@@ -88,15 +88,14 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
         super.viewWillAppear(true)
         guard let presenter = presenter else { return }
         fillUIData(object: presenter.object)
-//        titleLabel.text = presenter?.pageTitle
-//        snippetLabel.text = presenter?.snippet
     }
     
     func fillUIData(object: ObjectData) {
         titleLabel.text = object.title
         snippetLabel.text = object.snippet
         ratingLabel.text = "\((object.rating)) on Yelp"
-        directionsButton.setTitle("Directions /n \(object.direction) minute drive", for: .normal)
+        directionsButton.setTitle("Directions \n\(object.direction) minute drive", for: .normal)
+        directionsButton.titleLabel?.textAlignment = .center
     }
     
     @objc func panGesture(_ gestureRecognizer: UIPanGestureRecognizer) {

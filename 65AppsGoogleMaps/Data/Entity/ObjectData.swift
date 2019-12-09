@@ -10,8 +10,8 @@ import Foundation
 
 struct ObjectData: Codable {
     var id = Int()
-    var title = String()
-    var snippet = String()
+    var title: String?
+    var snippet: String?
     var rating = Int()
     var direction = Int()
 }

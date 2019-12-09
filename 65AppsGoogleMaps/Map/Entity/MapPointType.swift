@@ -11,7 +11,7 @@ import Foundation
 protocol MapPointType {
     var lat: Double { get }
     var long: Double { get }
-    var name: String? { get }
+    var title: String? { get }
     var snippet: String? { get }
     var locationTypeID: LocationTypes { get }
 }

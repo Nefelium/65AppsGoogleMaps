@@ -13,15 +13,15 @@ class POIItem: NSObject, GMUClusterItem, MapPointType {
     var lat: Double
     var long: Double
     var position: CLLocationCoordinate2D
-    var name: String?
+    var title: String?
     var snippet: String?
     var locationTypeID: LocationTypes
 
-    init(lat: Double, long: Double, name: String?, snippet: String?, locationTypeID: LocationTypes) {
+    init(lat: Double, long: Double, title: String?, snippet: String?, locationTypeID: LocationTypes) {
         self.lat = lat
         self.long = long
         self.position = CLLocationCoordinate2DMake(self.lat, self.long)
-        self.name = name
+        self.title = title
         self.snippet = snippet
         self.locationTypeID = locationTypeID
     }

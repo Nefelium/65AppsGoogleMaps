@@ -19,10 +19,10 @@ class RandomGenerator {
         for index in 1...clusterItemCount {
             let lat = kCameraLatitude + extent * randomScale()
             let long = kCameraLongitude + extent * randomScale()
-            let name = "Item \(index)"
+            let title = "Item \(index)"
             let item = POIItem(lat: lat,
                                long: long,
-                               name: name,
+                               title: title,
                                snippet: "[generated]",
                                locationTypeID: .zero)
             clusterItems.append(item)

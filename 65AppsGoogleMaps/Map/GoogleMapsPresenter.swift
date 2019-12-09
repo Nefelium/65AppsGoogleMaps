@@ -12,7 +12,7 @@ protocol GoogleMapsPresenterProtocol: class {
     var interactor: GoogleMapsInteractorProtocol { get set }
     var router: GoogleMapsRouterProtocol { get set }
  //   func isMarkerTapped(title: String, snippet: String)
-    func isMarkerTapped(id: Int)
+    func isMarkerTapped(mapPoint: POIItem)
     func showData(data: [MapPointType])
     func goToDataPage(object: ObjectData)
     func setCoordinatesFromServer()
@@ -68,8 +68,8 @@ class GoogleMapsPresenter: GoogleMapsPresenterProtocol {
         router.showAlert(message: message)
     }
     
-    func isMarkerTapped(id: Int) {
-        interactor.setFakeDataFromServer(id: id)
+    func isMarkerTapped(mapPoint: POIItem) {
+        interactor.setFakeDataFromServer(mapPoint: mapPoint)
     }
     
     func makeClusterItems(clusterItemCount: Int,

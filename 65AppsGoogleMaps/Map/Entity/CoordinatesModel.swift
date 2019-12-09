@@ -66,7 +66,7 @@ extension FeaturesCoordinate: MapPointType {
         return geometry.coordinates[0]
     }
 
-    var name: String? {
+    var title: String? {
         return properties.title
     }
 

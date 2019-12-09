@@ -110,11 +110,10 @@ extension MapViewController: GMSMapViewDelegate {
         guard let mapPoint = marker.userData as? POIItem else {
             return false
         }
-        marker.title = mapPoint.name
+        marker.title = mapPoint.title
         marker.snippet = mapPoint.snippet
         infoMarkerDidAdd = true
-        presenter?.isMarkerTapped(id: mapPoint.locationTypeID.markerId)
-      //  presenter?.isMarkerTapped(title: marker.title ?? "", snippet: marker.snippet ?? "")
+        presenter?.isMarkerTapped(mapPoint: mapPoint)
         return false
     }
 }

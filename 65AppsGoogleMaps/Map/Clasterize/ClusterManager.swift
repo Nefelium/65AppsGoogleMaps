@@ -35,7 +35,7 @@ class ClusterManager: Clusterization {
     
     func addItems(to clusterManager: GMUClusterManager, mapPoints: [MapPointType]) {
         for item in mapPoints {
-            let mapItem = POIItem(lat: item.lat, long: item.long, name: item.name ?? "", snippet: item.snippet ?? "", locationTypeID: item.locationTypeID)
+            let mapItem = POIItem(lat: item.lat, long: item.long, title: item.title ?? "", snippet: item.snippet ?? "", locationTypeID: item.locationTypeID)
          clusterManager.add(mapItem)
         }
     }

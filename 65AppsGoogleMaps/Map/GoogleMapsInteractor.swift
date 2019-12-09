@@ -14,10 +14,10 @@ protocol GoogleMapsInteractorProtocol {
     var presenter: GoogleMapsPresenterProtocol? { get set }
     func setCoordinatesFromServer()
     func setCoordinatesFromModel()
-    func setFakeDataFromServer(id: Int)
+    func setFakeDataFromServer(mapPoint: POIItem)
     func generatePOIItem(clusterManager: GMUClusterManager,
                          position: CLLocationCoordinate2D,
-                         name: String,
+                         title: String,
                          snippet: String,
                          id: LocationTypes)
     func generateClusterItems(count: Int, lat: Double, long: Double) -> [POIItem]
@@ -44,10 +44,17 @@ class GoogleMapsInteractor: GoogleMapsInteractorProtocol {
         }
     }
     
-    func setFakeDataFromServer(id: Int) {
-        fakeNetworkManager.getCoordinates(id: id) { [presenter] result in
+    func setFakeDataFromServer(mapPoint: POIItem) {
+        fakeNetworkManager.getCoordinates(id: mapPoint.locationTypeID.markerId) { [presenter] result in
             if let data = try? result.get() {
-                presenter?.goToDataPage(object: data)
+                var fakeObject = data
+                if mapPoint.title != "" {
+                    fakeObject.title = mapPoint.title
+                }
+                if mapPoint.snippet != "" {
+                    fakeObject.snippet = mapPoint.snippet
+                }
+                presenter?.goToDataPage(object: fakeObject)
             } else {
                 presenter?.errorDidReceive(with: result.error?.localizedDescription ?? "")
             }
@@ -59,11 +66,11 @@ class GoogleMapsInteractor: GoogleMapsInteractorProtocol {
         presenter?.showData(data: CoordinatesMock().typed)
     }
     
-    func generatePOIItem(clusterManager: GMUClusterManager, position: CLLocationCoordinate2D, name: String, snippet: String, id: LocationTypes) {
+    func generatePOIItem(clusterManager: GMUClusterManager, position: CLLocationCoordinate2D, title: String, snippet: String, id: LocationTypes) {
         
         let item = POIItem(lat: position.latitude,
                            long: position.longitude,
-                           name: name,
+                           title: title,
                            snippet: snippet,
                            locationTypeID: id)
         clusterManager.add(item)

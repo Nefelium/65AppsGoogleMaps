@@ -26,6 +26,6 @@ extension LocationTypes {
     }
     
     var markerId: Int {
-        Int.random(in: 0...10)
+        Int.random(in: 0...11)
     }
 }
