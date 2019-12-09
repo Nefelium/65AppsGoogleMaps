@@ -14,4 +14,7 @@ struct ObjectData: Codable {
     var snippet: String?
     var rating = Int()
     var direction = Int()
+    var hours = String()
+    var address = String()
+    var phone = String()
 }

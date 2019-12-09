@@ -35,6 +35,9 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
     @IBOutlet weak var holdView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var snippetLabel: UILabel!
+    @IBOutlet weak var hoursLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
     
     @IBAction func openDirections(_ sender: Any) {
         presenter?.openDirectionsClicked()
@@ -82,6 +85,7 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
         shareButton.layer.cornerRadius = 9
         collectionView.delegate = self
         collectionView.dataSource = self
+        directionsButton.titleLabel?.textAlignment = .center
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +99,9 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
         snippetLabel.text = object.snippet
         ratingLabel.text = "\((object.rating)) on Yelp"
         directionsButton.setTitle("Directions \n\(object.direction) minute drive", for: .normal)
-        directionsButton.titleLabel?.textAlignment = .center
+        hoursLabel.text = object.hours
+        addressLabel.text = object.address
+        phoneLabel.text = object.phone
     }
     
     @objc func panGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
