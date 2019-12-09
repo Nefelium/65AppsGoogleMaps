@@ -11,7 +11,6 @@ import Foundation
 protocol GoogleMapsPresenterProtocol: class {
     var interactor: GoogleMapsInteractorProtocol { get set }
     var router: GoogleMapsRouterProtocol { get set }
- //   func isMarkerTapped(title: String, snippet: String)
     func isMarkerTapped(mapPoint: POIItem)
     func showData(data: [MapPointType])
     func goToDataPage(object: ObjectData)

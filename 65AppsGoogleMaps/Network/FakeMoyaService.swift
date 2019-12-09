@@ -21,7 +21,7 @@ extension FakeMoyaService: TargetType {
     var path: String {
         switch self {
         case .getObjectData:
-            return "/object_title"
+            return "/object"
         }
     }
     
