@@ -12,6 +12,7 @@ import Result
 
 protocol FakeNetworkDataProvider: class {
     func getCoordinates(id: Int, completion: @escaping (Result<ObjectData, Error>) -> Void)
+    func getPictures(completion: @escaping (Result<PictureData, Error>) -> Void)
 }
 
 class FakeNetworkManager: FakeNetworkDataProvider {
@@ -23,6 +24,18 @@ let provider = MoyaProvider<FakeMoyaService>(stubClosure: MoyaProvider.immediate
             guard let self = self else { return }
             do {
                 let data = try self.handleResult(result: result, type: ObjectData.self)
+                completion(.success(data))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getPictures(completion: @escaping (Result<PictureData, Error>) -> Void) {
+        provider.request(.getPictures) { [weak self] result in
+            guard let self = self else { return }
+            do {
+                let data = try self.handleResult(result: result, type: PictureData.self)
                 completion(.success(data))
             } catch {
                 completion(.failure(error))

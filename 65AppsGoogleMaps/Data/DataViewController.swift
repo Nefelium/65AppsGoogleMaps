@@ -10,6 +10,7 @@ import UIKit
 
 protocol DataViewControllerProtocol: class {
     var presenter: DataScenePresenterProtocol? { get set }
+    var collectionView: UICollectionView! { get set }
 }
 
 class DataViewController: UIViewController, DataViewControllerProtocol {
@@ -65,7 +66,7 @@ class DataViewController: UIViewController, DataViewControllerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        presenter?.viewDidLoad()
         setupUI()
         panRecognizer.addTarget(self, action: #selector(panGesture(_:)))
         holdView.addGestureRecognizer(panRecognizer)

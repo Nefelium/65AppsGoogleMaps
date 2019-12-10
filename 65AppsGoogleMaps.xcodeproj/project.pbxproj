@@ -76,6 +76,7 @@
 		07A82FD1239A37F8004557E4 /* FakeDataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A82FD0239A37F8004557E4 /* FakeDataFactory.swift */; };
 		07A82FD4239A3994004557E4 /* ObjectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A82FD3239A3994004557E4 /* ObjectData.swift */; };
 		07A82FD6239A6573004557E4 /* FakeNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A82FD5239A6573004557E4 /* FakeNetworkManager.swift */; };
+		07A82FD8239FBBDF004557E4 /* PictureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A82FD7239FBBDF004557E4 /* PictureData.swift */; };
 		07B61D3623850D930096F5A3 /* DataSceneModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D3523850D930096F5A3 /* DataSceneModule.swift */; };
 		07B61D3923851C150096F5A3 /* DataSceneRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D3823851C150096F5A3 /* DataSceneRouter.swift */; };
 		07B61D3D23853C930096F5A3 /* DataScenePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B61D3C23853C930096F5A3 /* DataScenePresenter.swift */; };
@@ -231,6 +232,7 @@
 		07A82FD0239A37F8004557E4 /* FakeDataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataFactory.swift; sourceTree = "<group>"; };
 		07A82FD3239A3994004557E4 /* ObjectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectData.swift; sourceTree = "<group>"; };
 		07A82FD5239A6573004557E4 /* FakeNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNetworkManager.swift; sourceTree = "<group>"; };
+		07A82FD7239FBBDF004557E4 /* PictureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureData.swift; sourceTree = "<group>"; };
 		07B61D3523850D930096F5A3 /* DataSceneModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSceneModule.swift; sourceTree = "<group>"; };
 		07B61D3823851C150096F5A3 /* DataSceneRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSceneRouter.swift; sourceTree = "<group>"; };
 		07B61D3C23853C930096F5A3 /* DataScenePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScenePresenter.swift; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 			isa = PBXGroup;
 			children = (
 				07A82FD3239A3994004557E4 /* ObjectData.swift */,
+				07A82FD7239FBBDF004557E4 /* PictureData.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				0738629C235071CF00F22148 /* GMUGradient.m in Sources */,
 				07A82FD6239A6573004557E4 /* FakeNetworkManager.swift in Sources */,
 				07308853237E834F008D6E92 /* GoogleMapsSceneModule.swift in Sources */,
+				07A82FD8239FBBDF004557E4 /* PictureData.swift in Sources */,
 				076C058D234E0A78008517EE /* UICollectionView+Reusable.swift in Sources */,
 				0738628F235071CF00F22148 /* GMULineString.m in Sources */,
 				07308855237E8941008D6E92 /* UIViewController.swift in Sources */,

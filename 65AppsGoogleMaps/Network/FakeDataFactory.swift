@@ -91,4 +91,10 @@ class FakeDataFactory {
         }
         return ObjectData()
     }
+    
+    static func getPictures() -> PictureData {
+        var object = PictureData()
+        object.photos = ["photo1", "photo2", "photo3", "photo4", "photo5"]
+        return object
+    }
 }

@@ -25,5 +25,6 @@ class DataSceneModule: DataSceneModuleProtocol {
         view?.presenter = presenter
         presenter.interactor = interactor
         presenter.router = router
+        interactor.presenter = presenter
     }
 }

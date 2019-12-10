@@ -11,6 +11,7 @@ import Moya
 
 enum FakeMoyaService {
     case getObjectData(objectId: Int)
+    case getPictures
 }
 
 extension FakeMoyaService: TargetType {
@@ -22,12 +23,16 @@ extension FakeMoyaService: TargetType {
         switch self {
         case .getObjectData:
             return "/object"
+        case .getPictures:
+            return "/pictures"
         }
     }
     
     var method: Moya.Method {
         switch self {
         case .getObjectData:
+            return .get
+        case .getPictures:
             return .get
         }
     }
@@ -38,12 +43,18 @@ extension FakeMoyaService: TargetType {
             let data = FakeDataFactory.getData(by: objectId)
             guard let encodedData = try? JSONEncoder().encode(data) else { return Data() }
             return encodedData
+        case .getPictures:
+        let data = FakeDataFactory.getPictures()
+        guard let encodedData = try? JSONEncoder().encode(data) else { return Data() }
+        return encodedData
         }
     }
     
     var task: Task {
         switch self {
         case .getObjectData:
+            return .requestPlain
+        case .getPictures:
             return .requestPlain
         }
     }
@@ -52,6 +63,8 @@ extension FakeMoyaService: TargetType {
         switch self {
         case .getObjectData:
             return [:]
+        case .getPictures:
+        return [:]
         }
     }
     

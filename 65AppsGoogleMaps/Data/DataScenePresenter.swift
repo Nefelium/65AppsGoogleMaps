@@ -15,12 +15,15 @@ protocol DataScenePresenterProtocol: class {
     var snippet: String? { get set }
     var object: ObjectData { get set }
     var photoNames: [String] { get set }
+    func viewDidLoad()
     func closeButtonClicked()
     func openDirectionsClicked()
     func callsTapped()
     func websiteTapped()
     func favoritesTapped()
     func shareTapped()
+    func setPhotoNames(names: [String])
+    func errorDidReceive(with message: String)
 }
 
 class DataScenePresenter: DataScenePresenterProtocol {
@@ -29,7 +32,7 @@ class DataScenePresenter: DataScenePresenterProtocol {
     var interactor: DataSceneInteractorProtocol
     var router: DataSceneRouterProtocol
     
-    var photoNames = ["photo1", "photo2", "photo3", "photo4", "photo5"]
+    var photoNames = [String]()
     var pageTitle: String?
     var snippet: String?
     var object = ObjectData()
@@ -42,8 +45,21 @@ class DataScenePresenter: DataScenePresenterProtocol {
         self.router = router
     }
     
+    func viewDidLoad() {
+        interactor.setFakePicturesFromServer()
+    }
+    
     func closeButtonClicked() {
         router.closeViewController()
+    }
+    
+    func setPhotoNames(names: [String]) {
+        photoNames = names
+        view?.collectionView.reloadData()
+    }
+    
+    func errorDidReceive(with message: String) {
+        router.showAlert(message: message)
     }
     
     func openDirectionsClicked() {
