@@ -1,0 +1,6 @@
+module Pods_65AppsGoogleMaps {
+  umbrella header "Pods-65AppsGoogleMaps-umbrella.h"
+
+  export *
+  module * { export * }
+}
