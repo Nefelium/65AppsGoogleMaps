@@ -292,12 +292,8 @@
 				0738623623506FB900F22148 /* Google-Maps-iOS-Utils */,
 				072CCE32234756F8007D0F77 /* AppDelegate.swift */,
 				07308858237EB8BF008D6E92 /* Launcher.swift */,
-				076C0587234E09F4008517EE /* Extensions */,
-				076C058B234E0A36008517EE /* Protocols */,
-				073862B223544B4400F22148 /* Enums */,
-				0767E59A2355A8C20092EEEC /* View */,
-				07C7E6B5236AB07900DD8FE1 /* Data */,
-				07C7E6AE236AB06C00DD8FE1 /* Map */,
+				07955C942471975D00F01C12 /* Common */,
+				07955C8D2471975000F01C12 /* Scenes */,
 				0722B10A235DA472000BB03D /* Network */,
 				072CCE3E234756FA007D0F77 /* Info.plist */,
 				072CCE36234756F8007D0F77 /* Main.storyboard */,
@@ -497,6 +493,26 @@
 				076C0590234E0B65008517EE /* Reusable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		07955C8D2471975000F01C12 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				07C7E6B5236AB07900DD8FE1 /* Data */,
+				07C7E6AE236AB06C00DD8FE1 /* Map */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		07955C942471975D00F01C12 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				076C0587234E09F4008517EE /* Extensions */,
+				076C058B234E0A36008517EE /* Protocols */,
+				073862B223544B4400F22148 /* Enums */,
+				0767E59A2355A8C20092EEEC /* View */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		07965030234B4AEE005C72B2 /* Transition */ = {
