@@ -1003,7 +1003,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.65apps.-5AppsGoogleMaps";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/mikhailfogel/65AppsGoogleMaps/65AppsGoogleMaps/BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = 65AppsGoogleMaps/BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1027,7 +1027,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.65apps.-5AppsGoogleMaps";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/mikhailfogel/65AppsGoogleMaps/65AppsGoogleMaps/BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = 65AppsGoogleMaps/BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
