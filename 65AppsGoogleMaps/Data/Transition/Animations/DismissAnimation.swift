@@ -19,7 +19,7 @@ class DismissAnimation: NSObject {
             from.frame = initialFrame.offsetBy(dx: 0, dy: initialFrame.height)
         }
         
-        animator.addCompletion { (position) in
+        animator.addCompletion { (_) in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
         

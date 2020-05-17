@@ -10,16 +10,19 @@ import Foundation
 import GoogleMaps
 import GooglePlaces
 
-class ClusterManager {
+protocol Clusterization: class {
+    func configureClusterManager(mapView: GMSMapView, buckets: [NSNumber], colors: [UIColor], mapPoints: [MapPointType]) -> (GMUClusterManager, GMUDefaultClusterRenderer)
+    func addItems(to clusterManager: GMUClusterManager, mapPoints: [MapPointType])
+}
+
+class ClusterManager: Clusterization {
     
-    func configureClusterManager(mapView: GMSMapView, buckets: [NSNumber], colors: [UIColor], mapPoints: [Point]) -> (GMUClusterManager, GMUDefaultClusterRenderer) {
+    func configureClusterManager(mapView: GMSMapView, buckets: [NSNumber], colors: [UIColor], mapPoints: [MapPointType]) -> (GMUClusterManager, GMUDefaultClusterRenderer) {
             let iconGenerator = makeIconGenerator(buckets: buckets, colors: colors)
             let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
             let renderer = GMUDefaultClusterRenderer(mapView: mapView, clusterIconGenerator: iconGenerator)
             
             let clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm, renderer: renderer)
-        prepareItems(clusterManager: clusterManager, mapPoints: mapPoints)
-            
             return (clusterManager, renderer)
         }
     
@@ -30,10 +33,9 @@ class ClusterManager {
         return iconGenerator
     }
     
-    private func prepareItems(clusterManager: GMUClusterManager, mapPoints: [Point]) {
+    func addItems(to clusterManager: GMUClusterManager, mapPoints: [MapPointType]) {
         for item in mapPoints {
-         let position = CLLocationCoordinate2DMake(item.lattitude, item.longitude)
-         let mapItem = POIItem(position: position, name: item.title, snippet: item.snippet, locationTypeID: .zero)
+            let mapItem = POIItem(lat: item.lat, long: item.long, title: item.title ?? "", snippet: item.snippet ?? "", locationTypeID: item.locationTypeID)
          clusterManager.add(mapItem)
         }
     }

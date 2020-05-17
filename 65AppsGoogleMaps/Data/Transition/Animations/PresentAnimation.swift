@@ -20,7 +20,7 @@ class PresentAnimation: NSObject {
             to.frame = finalFrame
         }
         
-        animator.addCompletion { (position) in
+        animator.addCompletion { (_) in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
         

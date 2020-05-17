@@ -8,14 +8,16 @@
 
 import UIKit
 
-class DataViewController: UIViewController {
+protocol DataViewControllerProtocol: class {
+    var presenter: DataScenePresenterProtocol? { get set }
+    var collectionView: UICollectionView! { get set }
+}
+
+class DataViewController: UIViewController, DataViewControllerProtocol {
 
     private var panRecognizer = UIPanGestureRecognizer()
     
-    var photoNames = ["photo1", "photo2", "photo3", "photo4", "photo5"]
-    
-    var viewModel = DataViewModel()
-    
+    var presenter: DataScenePresenterProtocol?
     @IBOutlet weak var directionsButton: UIButton!
     @IBOutlet weak var callsButton: VerticallyButton!
     @IBOutlet weak var websiteButton: VerticallyButton!
@@ -24,6 +26,7 @@ class DataViewController: UIViewController {
     
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var hoursView: UIView!
@@ -33,22 +36,37 @@ class DataViewController: UIViewController {
     @IBOutlet weak var holdView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var snippetLabel: UILabel!
+    @IBOutlet weak var hoursLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
     
-    @IBAction func closeAction(_ sender: Any) {
-        self.dismiss(animated: true)
+    @IBAction func openDirections(_ sender: Any) {
+        presenter?.openDirectionsClicked()
     }
     
-    var fullContainer: CGRect {
-        let bounds = UIScreen.main.bounds
-        return CGRect(x: 0,
-                      y: 0, // 0 - page to top
-            width: bounds.width,
-            height: bounds.height) // bounds.height - full page
+    @IBAction func callsTapped(_ sender: Any) {
+        presenter?.callsTapped()
+    }
+    
+    @IBAction func websiteTapped(_ sender: Any) {
+        presenter?.websiteTapped()
+    }
+    
+    @IBAction func favoritesTapped(_ sender: Any) {
+        presenter?.favoritesTapped()
+    }
+    
+    @IBAction func shareTapped(_ sender: Any) {
+        presenter?.shareTapped()
+    }
+    
+    @IBAction func closeAction(_ sender: Any) {
+        presenter?.closeButtonClicked()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        presenter?.viewDidLoad()
         setupUI()
         panRecognizer.addTarget(self, action: #selector(panGesture(_:)))
         holdView.addGestureRecognizer(panRecognizer)
@@ -56,7 +74,7 @@ class DataViewController: UIViewController {
     }
     
     @objc func dismissSelf() {
-        self.dismiss(animated: true)
+        presenter?.closeButtonClicked()
     }
     
     private func setupUI() {
@@ -68,9 +86,23 @@ class DataViewController: UIViewController {
         shareButton.layer.cornerRadius = 9
         collectionView.delegate = self
         collectionView.dataSource = self
-        titleLabel.text = viewModel.title
-        snippetLabel.text = viewModel.snippet
-        
+        directionsButton.titleLabel?.textAlignment = .center
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        guard let presenter = presenter else { return }
+        fillUIData(object: presenter.object)
+    }
+    
+    func fillUIData(object: ObjectData) {
+        titleLabel.text = object.title
+        snippetLabel.text = object.snippet
+        ratingLabel.text = "\((object.rating)) on Yelp"
+        directionsButton.setTitle("Directions \n\(object.direction) minute drive", for: .normal)
+        hoursLabel.text = object.hours
+        addressLabel.text = object.address
+        phoneLabel.text = object.phone
     }
     
     @objc func panGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
@@ -100,12 +132,12 @@ class DataViewController: UIViewController {
 extension DataViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoNames.count
+        return presenter?.photoNames.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: PhotoCell.self)
-        cell.configure(data: photoNames[indexPath.item])
+        cell.configure(data: presenter?.photoNames[indexPath.item] ?? "")
             return cell
     }
     

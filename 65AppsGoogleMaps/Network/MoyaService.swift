@@ -35,7 +35,7 @@ extension MoyaService: TargetType {
         return .requestPlain
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return ["Content-type": "application/json; charset=UTF-8"]
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 struct CoordinatesModel: Codable {
     
-    var features = [FeaturesCoordinate]()
+    var features: [FeaturesCoordinate]
     
     enum CodingKeys: String, CodingKey {
         case features
@@ -19,8 +19,8 @@ struct CoordinatesModel: Codable {
 
 struct FeaturesCoordinate: Codable {
     var type = "Feature"
-    var properties = Properties()
-    var geometry = Geometry()
+    var properties: Properties
+    var geometry: Geometry
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -35,6 +35,7 @@ struct Properties: Codable {
     var markersymbol: String?
     var title: String?
     var snippet: String?
+    var locationTypeID: LocationTypes?
     
     enum CodingKeys: String, CodingKey {
         case markercolor = "marker-color"
@@ -52,5 +53,28 @@ struct Geometry: Codable {
     enum CodingKeys: String, CodingKey {
         case type
         case coordinates
+    }
+}
+
+extension FeaturesCoordinate: MapPointType {
+
+    var lat: Double {
+        return geometry.coordinates[1]
+    }
+
+    var long: Double {
+        return geometry.coordinates[0]
+    }
+
+    var title: String? {
+        return properties.title
+    }
+
+    var snippet: String? {
+        return properties.snippet
+    }
+
+    var locationTypeID: LocationTypes {
+        return properties.locationTypeID ?? .zero
     }
 }
